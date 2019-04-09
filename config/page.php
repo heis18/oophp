@@ -13,15 +13,15 @@ return [
         // Change here to use your own templatefile as layout
         "template" => "anax/v2/layout/dbwebb_se",
         "data" => [
-            "baseTitle" => " | oophp",
+            "baseTitle" => " | oophp-Isåfjäll",
             "bodyClass" => null,
-            "favicon" => "favicon.ico",
+            "favicon" => "favicon2.ico",
             "htmlClass" => null,
             "lang" => "sv",
             "stylesheets" => [
                 // Change here to set another default stylesheet
-                "css/dbwebb-se.min.css",
-                //"css/another.min.css",
+                // "css/dbwebb-se.min.css",
+                "css/my1theme.min.css",
             ],
             "javascripts" => [
                 "js/responsive-menu.js",
@@ -45,7 +45,7 @@ return [
             "template" => "anax/v2/header/site_logo_text",
             "data" => [
                 "homeLink"      => "",
-                "siteLogoText"  => "oophp",
+                "siteLogoText"  => "Isåfjälls",
                 "siteLogoTextIcon" => "image/theme/leaf_40x40.png",
                 "siteLogoTextIconAlt" => "Löv-bild",
             ],
