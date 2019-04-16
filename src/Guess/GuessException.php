@@ -3,6 +3,7 @@
 namespace Heis\Guess;
 
 use Exception;
+
 /**
  * Exception class for GuessException.
  */
