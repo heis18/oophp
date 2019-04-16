@@ -3,4 +3,6 @@
 Redovisningstexter
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/redovisning/00_index.md`.
+På denna dida kommer du finna alla mina intressanta och reflekterande redovisningstexter. Du finner dem allihop länkarna till vänster!
+
+Trevlig läsning! 

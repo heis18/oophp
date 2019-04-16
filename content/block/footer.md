@@ -1,1 +1,3 @@
-Copyright år och ditt namn samt diverse länkar som du finner relevanta.
+Copyright 2019 och Helena Isåfjäll
+
+All icons from [Fontawesome](https://fontawesome.com/)

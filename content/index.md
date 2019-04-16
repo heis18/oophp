@@ -1,27 +1,24 @@
 ---
 title: "Min fina titel"
 ---
-Min me-sida i kursen oophp
+Helenas me-sida i kursen oophp
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/index.md`.
+Så, då var det dags för en ny trevlig text om mig själv, den fjärde för detta året! :)
 
-[FIGURE src="image/me.jpg?w=400&a=4,27,11,0&cf&sharpen" class="right" caption="Bild på mig, ätandes glass och hållandes ett kort på någon jultillställning."]
+[FIGURE src="image/kids.jpg?w=350&sharpen" class="right" caption="Bild på barnen när vi för en gångs skull lyckats syskonmatcha, haha!"]
 
-Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.
 
-Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.
+Vad mer kan det finnas att berätta om mig som inte redan är sagt? Jag är väldigt nöjd att jag tagit mig så här långt under läsåret, det har inte varit någon dans på rosor, men här är vi nu i alla fall.
 
-Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. Jag gillade landhockey och har spelat bandy och hockey samt gått bowlinggymnasiet i Nässjö. Jag har varit städare, diskare, kallskänka, servitör och kock. På ett bananskal landade jag i Ronneby när jag började högskolan 1990 där och nu är jag kvar med fru, barn och så vidare.
+Jag kan väl konstatera att jag har en fantastisk familj som tagit hand om och stått ut med mig under året, inte heller för dem har det någ alltid varit så lätt att hantera mig och min stress att bolla studier, jobb och familjeaktiviteter. Min 6-åriga tjej bara växer och växer, tappar tänder och har snart helt knäckt läskoden. Detta är något hon längtat efter länge, då hon lyckades lära sig engelska för flera år sedan (youtube är fantastiskt ibland) så nu öppnar sig snart en hel värld av böcker på två språk på samma gång. Den lille är ett yrväder, pratar inte så mycket än, men uppvisar redan samma intresse för språk som sin storasyster.
 
-Programmering har alltid intresserat mig sedan 13-årsåldern och min första dator var en Spectravideo 328 med bandspelare.
+Själv kör jag igång slutspurten både för mina egna studier detta år, och inför mina niors slutbetyg. Tyvärr är det ju inte lika många av dem som är studiemotiverade på samma nivå som en annan, men flera guldkorn finns det som tur är varje år.
 
-Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker och blir över.
+Så mycket annat har jag nog inte hunnit under det gånga året, tiden bara rusar iväg och fler än jag här hemma längtar efter sommarlov och semester.
 
-Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching, sedan turfing och nu på sistone verkar släktforskning lite spännande. Annars kan jag alltid koda på något av mina opensource-projekt, det finns och blir över.
+Något mer att berätta om mig och min bakgrund kan kanske vara att jag har alltid varit kreativ och estetiskt intresserad. Jag läste mediaprogrammet på gymnasiet, bytte sedan bana och läste till lärare med framförallt inriktning bild. Efter lärarexamen har jag arbetat som bildlärare på högstadiet och gymnasiet i över tolv år och började för ett par år sedan fundera om detta verkligen är någonting jag önskar göra i 30 år till. Började då se över vad det finns för intressanta utbildningar inom mitt intresseområde och har sedan läst kurser i grafisk design, vektorgrafik och nu detta året webbprogrammering. 
 
-Vill du läsa mer om vad jag jobbat med så kan du kika på min [Linkedin-profil](https://www.linkedin.com/in/pt90mr/).
+Vill ni se mer av vad jag sysselsatt mig med de senaste åren, titta in på min [Linkedin-profil](https://www.linkedin.com/in/helena-is%C3%A5fj%C3%A4ll-0b2145178/).
 
-Vi syns och hörs i forum och chatt!
-
-/Mikael
+Då så, sista rycket på årets sista kurs!

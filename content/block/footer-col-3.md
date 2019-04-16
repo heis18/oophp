@@ -1,3 +1,7 @@
-#### Footer col 3
+#### Lite mer kul fakta?
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Gift 2 barns mor
+
+Bildlärare
+
+Student

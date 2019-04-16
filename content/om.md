@@ -4,7 +4,7 @@ views:
         region: sidebar-right
         template: anax/v2/block/default
         data:
-            meta: 
+            meta:
                 type: single
                 route: block/om-kursrepo
 
@@ -12,17 +12,17 @@ views:
         region: sidebar-right
         template: anax/v2/block/default
         data:
-            meta: 
+            meta:
                 type: single
                 route: block/om-redovisa
 ---
 Om
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/om.md`.
+[FIGURE src="image/arvin.jpg?w=300&sharpen" class="right" caption="En riktig liten fashionista!"]
 
-Skriv några kloka ord om kursen?
+Exakt vad ObjektOrienterd programmering egentligen innebär, har jag väldigt svårt att skriva något om för ögonblicket - för det har jag faktiskt ingen aning om. Däremot så känner jag att det ska bli spännande att få lära mig.
 
-Lägg till en fin och representativ bild för kursen, enligt ditt eget val.
+Däemot så upplever jag fortfarande det mesta av webbprogrammeringen som någonting kreativt, så här fick komma en av de mer kreativa bilder jag hade i min kamera för ögonblicket.
 
-[FIGURE src=image/car.png?w=740&filter=grayscale&f1=colorize,0,30,0,0 caption="En fin bil som demobild, lite oklart hur den är representativ, men ändå..."]
+<!-- &filter=grayscale&f1=colorize,0,30,0,0 -->
