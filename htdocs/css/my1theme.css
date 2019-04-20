@@ -6612,6 +6612,29 @@ input {
   margin-top: 4em;
   margin-bottom: 4em;
 }
+.players,
+.dices {
+  border: solid 2.5px #d6c9e1;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  background-color: #dcdaec;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.05);
+  margin-top: 4em;
+  margin-bottom: 3em;
+}
+.dices {
+  margin-bottom: 2em;
+}
+.game100 input {
+  padding: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 /**
  * My settings.
  */

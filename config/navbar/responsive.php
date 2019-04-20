@@ -60,6 +60,11 @@ return [
             "title" => "Spela Gissa numret.",
         ],
         [
+            "text" => "100 Game",
+            "url" => "dice-game",
+            "title" => "Spela 100 spelet.",
+        ],
+        [
             "text" => "Styleväljare",
             "url" => "style",
             "title" => "Välj stylesheet.",
