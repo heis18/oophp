@@ -50,8 +50,6 @@ class DiceHandTest extends TestCase
       $this->assertEquals(3, count($hand->dices()), "Misslyckades med att lägga till flera i listan.");
     }
 
-
-
     /**
      * Test if we can sum the values from the dices.
      */
@@ -69,5 +67,23 @@ class DiceHandTest extends TestCase
       $hand->add(new Dice(4));
 
       $this->assertEquals(11, ($hand->sum()), "Misslyckades med att summera tärningarna.");
+    }
+
+    /**
+    * Test get hand
+    */
+    public function testGetHand()
+    {
+      $game = new DiceGame();
+
+      $this->assertEquals(null, $game->getHand(0));
+      $this->assertEquals(null, $game->getHand(1));
+
+      $hand = new DiceHand(0);
+      $hand->add(new Dice(6));
+      $game->addHandToList($hand);
+
+      $this->assertNotEquals(null, $game->getHand(0));
+      $this->assertEquals(null, $game->getHand(1));
     }
 }

@@ -19,7 +19,7 @@ class DiceHand
        *
        * @param int $dices Number of dices to create, defaults to five.
        */
-    public function __construct(int $dices = 5)
+    public function __construct(int $dices = 3)
     {
           $this->dices =  [];
           $this->values = [];

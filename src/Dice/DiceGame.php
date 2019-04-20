@@ -18,7 +18,9 @@ class DiceGame
     private $hasWon;
     private $diceHands;
     private $winlimit;
-    
+    private $currentHand;
+    private $name;
+
 
     /**
      * Constructor to initiate the object with current game settings,
@@ -36,7 +38,21 @@ class DiceGame
         $this->hasWon = false;
         $this->diceHands = [];
         $this->winlimit = 100;
+        $this->currentHand = new DiceHand();
     }
+
+
+
+    public function getName(){
+      return $this->name;
+    }
+
+
+
+    public function setName($name){
+        $this->name = $name;
+    }
+
 
 
     public function roll()
@@ -45,6 +61,18 @@ class DiceGame
     }
 
 
+    /**
+    * Get hand for round.
+    * @param int $round The round to get hand for.
+    * @return DiceHand for selected round, null if not available.
+    */
+    public function getHand($round){
+        if(array_key_exists($round,$this->diceHands)){
+          return $this->diceHands[$round];
+    }
+
+      return null;
+    }
 
 
     public function isHandValid($hand)
@@ -62,7 +90,7 @@ class DiceGame
 
 
     /**
-     * Add a result from hand to another unsaved hand, if you want to keep roll.
+     * Add a result from hand.
      *
      * @return int as the sum of all values.
      */
@@ -70,6 +98,16 @@ class DiceGame
     {
         return $this->diceHands;
 
+    }
+
+    /**
+     * Add a result from hand.
+     *
+     * @return int as the sum of all values.
+     */
+    public function currentHand()
+    {
+        return $this->currentHand;
     }
 
 
