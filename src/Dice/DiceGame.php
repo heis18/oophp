@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Roll dices to reach 100 points, class supporting the game through GET, POST and SESSION.
+ *
  * @author Helena Isåfjäll <heis18@student.bth.se>
  */
 
@@ -14,18 +15,30 @@ use Exception;
 class DiceGame
 {
     /**
-     * @var bool $hasWon      If the game is won.
-     * @var int $diceHands    The current dices numbers.
-     * @var int $winlimit     The limit of points to reach to win the game.
-     * @var int $currentHand  The current hand of dices.
-     * @var string $name      Who is playing the game.
+     * @var array of DiceHand $diceHands The current dices numbers.
      */
-    private $hasWon; //TODO används denna?
     private $diceHands;
+
+    /**
+    * @var int $winlimit The limit of points to reach to win the game.
+
+    */
+
     private $winlimit;
+
+    /**
+    * @var int $currentHand The current hand of dices.
+    */
     private $currentHand;
+
+    /**
+    * @var string $name Who is playing the game.
+    */
     private $name;
 
+    /**
+    * Create a new DiceGame
+    */
     public function __construct()
     {
         $this->hasWon = false;
@@ -34,9 +47,8 @@ class DiceGame
         $this->currentHand = new DiceHand(0);
     }
 
-
     /**
-     * Get which player is playing.
+     * Get the name of the player.
      *
      * @return string with the name of the player.
      */
@@ -45,19 +57,23 @@ class DiceGame
         return $this->name;
     }
 
-
     /**
-     * Set name of player who is playing.
+     * Set the name of player who is playing.
+     *
+     * @param string $name name of player
+     *
+     * @return void
      */
     public function setName($name)
     {
         $this->name = $name;
     }
 
-
     /**
     * Get hand for round.
+    *
     * @param int $round The round to get hand for.
+    *
     * @return DiceHand for selected round, null if not available.
     */
     public function getHand($round)
@@ -69,9 +85,10 @@ class DiceGame
         return null;
     }
 
-
     /**
      * Check if the hand is valid or not, if it has a 1 in it.
+     *
+     * @param DiceHand $hand The hand to check
      *
      * @return bool true if the hand is ok.
      */
@@ -85,14 +102,16 @@ class DiceGame
         if ($fail === false) {
             return true;
         }
+
         return false;
     }
 
 
     /**
-     * Add a result from hand.
-     * //TODO DENNA KOMMENTAREN ÄR FEL.
-     * @return int as the sum of all values.
+     * Gives all the hands.
+     *
+     * @return array of DiceHand.
+     *
      */
     public function diceHands()
     {
@@ -100,28 +119,26 @@ class DiceGame
     }
 
     /**
-     * Add a result from hand.
-     * //TODO DENNA KOMMENTAREN ÄR FEL
-     * @return int as the sum of all values.
+     * Gets the current hand.
+     *
+     * @return DiceHand the current hand
      */
     public function currentHand()
     {
         return $this->currentHand;
     }
 
-
-
     /**
-     * Add a result from hand to the list of saved result.
-     * //TODO DENNA KOMMENTAREN ÄR FEL
-     * @return int as the sum of all values.
+     * Add the current hand to the list of saved result.
+     *
+     * @param DiceHand $hand a hand to store to the history.
+     *
+     * @return void
      */
     public function addHandToList($hand)
     {
         $this->diceHands[] = $hand;
     }
-
-
 
     /**
      * Create a new hand when you start a new round.
@@ -149,9 +166,10 @@ class DiceGame
         return $res;
     }
 
-
     /**
      * Get the sum of all dices.
+     *
+     * @param DiceHand $hand Include hand in sum.
      *
      * @return int as the sum of all valid dices, if the hand is valid.
      */
@@ -167,6 +185,8 @@ class DiceGame
 
     /**
      * Get a preview of what the result is going to be..
+     *
+     * @param DiceHand $currentHand Preview the sum.
      *
      * @return int as the sum.
      */
@@ -184,6 +204,8 @@ class DiceGame
 
     /**
      * Get the result if this player has won the game.
+     *
+     * @param DiceHand $currentHand Check to see if the current hand has won the game.
      *
      * @return bool as the result.
      */

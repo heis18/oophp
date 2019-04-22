@@ -9,7 +9,7 @@
     </transformer>
     <files>
         <directory>src</directory>
-        <directory>vendor/anax/</directory>
+	<ignore>vendor/*</ignore>
         <ignore>test/*</ignore>
     </files>
 </phpdoc>

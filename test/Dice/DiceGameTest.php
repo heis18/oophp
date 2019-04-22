@@ -22,18 +22,7 @@ class DiceGameTest extends TestCase
     {
         $this->assertTrue(true);
     }
-
-
-
-    public function testGameRoll()
-    {
-        $game = new DiceGame();
-        $hand = $game->roll();
-        $this->assertInstanceOf("\Heis\Dice\DiceHand", $hand);
-    }
-
-
-
+    
     /**
      * Test is the hand is valide, if it contains a one ore not.
      */
