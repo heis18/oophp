@@ -132,6 +132,7 @@ class DiceBoard
 
     /**
     * Has the computer enough points or should it make another attempt.
+    *
     * @param DiceHand $hand the hand to check.
     */
     public function computerHasEnough($hand){
