@@ -1,28 +1,36 @@
 <?php
 
 /**
+ * A nice dice.
  * @author Helena Isåfjäll <heis18@student.bth.se>
  */
 
 namespace Heis\Dice;
 
+/**
+* A php code version of a dice.
+*/
 class Dice
 {
   /**
-  *@var int $number   The number from the Dice
+  *@var int $number the number from the Dice
   */
 
     private $number;
 
+    /**
+    * Create a new dices
+    * @param int $val the value of the dice. -1 if no value is set.
+    */
     public function __construct($val = -1)
     {
         $this->number = $val;
     }
 
     /**
-     * Randomize the dicenumber between 1 and 6 to initiate a new game.
+     * Randomize the dicenumber between 1 and 6 of the current dice.
      *
-     * @return void
+     * @return int the value of the dice after roll.
      */
 
     public function roll()
@@ -31,23 +39,20 @@ class Dice
         return $this->getNumber();
     }
 
-
-
-      /**
-      * A function that gets the current dice value
-      *
-      *@return int value of the dice
-      */
+    /**
+    * Get ets the current dice value
+    *
+    * @return int value of the dice
+    */
     public function getNumber()
     {
         return $this->number;
     }
 
-
       /**
-      * New function that do the same as getNumber
+      * Get the last roll
       *
-      *@return int value of the dice
+      *@return int the value of the dice
       */
     public function getLastRoll()
     {
