@@ -8,7 +8,7 @@
 namespace Heis\Dice;
 
 /**
-* A php code version of a dice.
+* A dice.
 */
 class Dice
 {
@@ -40,7 +40,7 @@ class Dice
     }
 
     /**
-    * Get ets the current dice value
+    * Gets the current dice value
     *
     * @return int value of the dice
     */
@@ -52,7 +52,7 @@ class Dice
       /**
       * Get the last roll
       *
-      *@return int the value of the dice
+      * @return int the value of the dice
       */
     public function getLastRoll()
     {

@@ -110,7 +110,7 @@ class DiceGame
     /**
      * Gives all the hands.
      *
-     * @return array of DiceHand.
+     * @return DiceHand[]
      *
      */
     public function diceHands()
@@ -207,7 +207,7 @@ class DiceGame
      *
      * @param DiceHand $currentHand Check to see if the current hand has won the game.
      *
-     * @return bool as the result.
+     * @return bool as the result. True if the game is won.
      */
     public function hasWon($currentHand)
     {

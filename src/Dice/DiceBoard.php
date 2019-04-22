@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * Single game of dice, or a player.
  * @author Helena Isåfjäll <heis18@student.bth.se>
  */
 
@@ -9,20 +10,28 @@ namespace Heis\Dice;
 use Exception;
 
 /**
- * Guess my number, a class supporting the game through GET, POST and SESSION.
+ * A board for guess my number.
  */
 class DiceBoard
 {
     /**
-     * @var int $round    Number of which round the game is in.
-     * @var bool $players Which players is involved in the game.
+     * @var int $round Number of which round the game is in.
+     */
+     private $round;
+
+     /**
+     * @var DiceGame $players Which players is involved in the game.
+     */
+     private $players;
+
+     /**
      * @var int $currentPlayer Which is the current player
      */
+     private $currentPlayer;
 
-    private $round;
-    private $players;
-    private $currentPlayer;
-
+     /**
+     * Create a new DiceGame with one player and a computer.
+     */
     public function __construct()
     {
         $this->round = 1;
@@ -35,7 +44,6 @@ class DiceBoard
         $this->currentPlayer = 0;
     }
 
-
   /**
    * Get the first player.
    *
@@ -45,7 +53,6 @@ class DiceBoard
     {
         return $this->players [0];
     }
-
 
   /**
    * Get the second player/computer.
@@ -68,7 +75,7 @@ class DiceBoard
     }
 
     /**
-     * Create the next round in the game.
+     * Go to the next round in the game.
      * @return void
      */
     public function nextRound()
@@ -78,8 +85,8 @@ class DiceBoard
         $this->getComputer()->createNewCurrentHand();
     }
 
-    /*
-      // TODO MISSING COMMENT
+    /**
+    * Move the game to the next player.
     */
     public function nextPlayer()
     {
@@ -104,9 +111,9 @@ class DiceBoard
     }
 
     /**
-     * Get the spelet är: Player 1 winning player in the game.
+     * Get the the player who won
      *
-     * @return DiceGame with winning player.
+     * @return DiceGame with winning player, or null if no winner is detected.
      */
     public function getWinner()
     {
@@ -123,8 +130,9 @@ class DiceBoard
         return null;
     }
 
-    /*
-      // TODO MISSING COMMENT
+    /**
+    * Has the computer enough points or should it make another attempt.
+    * @param DiceHand $hand the hand to check.
     */
     public function computerHasEnough($hand){
       $computer = $this->getComputer();
@@ -143,8 +151,8 @@ class DiceBoard
       return false;
     }
 
-    /*
-      // TODO MISSING COMMENT
+    /**
+    * Play for the computer.
     */
     public function playComputer()
     {

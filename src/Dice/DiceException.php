@@ -1,5 +1,7 @@
 <?php
-
+/**
+* Exception class for GuessException.
+*/
 namespace Heis\Guess;
 
 use Exception;

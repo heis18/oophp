@@ -1,21 +1,25 @@
 <?php
 
 /**
+* A hand, consisting a number of dices
  * @author Helena Isåfjäll <heis18@student.bth.se>
  */
 
 namespace Heis\Dice;
 
 /**
-  * A dicehand, consisting dices
+  * A hand, consisting a number of dices
   */
 class DiceHand
 {
-  /**
-       * @var Dice $dices   Array consisting of dices.
-       * @var int  $values  Array consisting of last roll of the dices.
-       */
+    /**
+     * @var Dice $dices   Array consisting of dices.
+     */
     private $dices;
+
+    /**
+    * @var int[] $values Array consisting of last roll of the dices.
+    */
     private $values;
 
       /**
@@ -49,6 +53,7 @@ class DiceHand
 
       /**
        * Add a dices.
+       * @param Dice $dice dice to add to the hand
        *
        * @return void.
        */
@@ -82,7 +87,7 @@ class DiceHand
     /**
      * Add a result from hand to another unsaved hand, if you want to keep roll.
      *
-     * // TODO INCORRECT COMMENT
+     * @param DiceHand $hand the hand of dices to add to this hand.
      * @return int as the sum of all values.
      */
     public function addHandToHand($hand)
@@ -91,7 +96,6 @@ class DiceHand
             $this->add($dice);
         }
     }
-
 
       /**
        * Get the sum of all dices.
