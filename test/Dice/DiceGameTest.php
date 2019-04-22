@@ -1,9 +1,15 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 use PHPUnit\Framework\TestCase;
+
 use Exception;
+
 /**
  * Example test class.
  */
@@ -33,9 +39,9 @@ class DiceGameTest extends TestCase
      */
     public function testIfHandIsValidException()
     {
-       $game = new DiceGame();
-       $this->expectException(Exception::class);
-       $handIsValid = $game->isHandValid(null);
+        $game = new DiceGame();
+        $this->expectException(Exception::class);
+        $handIsValid = $game->isHandValid(null);
     }
 
 
@@ -44,15 +50,15 @@ class DiceGameTest extends TestCase
      */
     public function testIfHandIsValidSuccess()
     {
-       $game = new DiceGame();
-       $hand = new DiceHand(0);
-       $hand->add(new Dice(6));
-       $hand->add(new Dice(5));
-       $hand->add(new Dice(4));
-       $hand->add(new Dice(3));
-       $hand->add(new Dice(2));
-       $handIsValid = $game->isHandValid($hand);
-       $this->assertTrue($handIsValid);
+        $game = new DiceGame();
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(6));
+        $hand->add(new Dice(5));
+        $hand->add(new Dice(4));
+        $hand->add(new Dice(3));
+        $hand->add(new Dice(2));
+        $handIsValid = $game->isHandValid($hand);
+        $this->assertTrue($handIsValid);
     }
 
 
@@ -61,15 +67,15 @@ class DiceGameTest extends TestCase
      */
     public function testIfHandIsValidFail()
     {
-       $game = new DiceGame();
-       $hand = new DiceHand();
-       $hand->add(new Dice(6));
-       $hand->add(new Dice(5));
-       $hand->add(new Dice(4));
-       $hand->add(new Dice(3));
-       $hand->add(new Dice(1));
-       $handIsValid = $game->isHandValid($hand);
-       $this->assertFalse($handIsValid);
+         $game = new DiceGame();
+         $hand = new DiceHand();
+         $hand->add(new Dice(6));
+         $hand->add(new Dice(5));
+         $hand->add(new Dice(4));
+         $hand->add(new Dice(3));
+         $hand->add(new Dice(1));
+         $handIsValid = $game->isHandValid($hand);
+         $this->assertFalse($handIsValid);
     }
 
 
@@ -101,33 +107,32 @@ class DiceGameTest extends TestCase
      */
     public function testSumResult()
     {
-      $game = new DiceGame();
-      $hand = new DiceHand();
-      $hand->add(new Dice(6));
-      $hand->add(new Dice(5));
-      $hand->add(new Dice(4));
+        $game = new DiceGame();
+        $hand = new DiceHand();
+        $hand->add(new Dice(6));
+        $hand->add(new Dice(5));
+        $hand->add(new Dice(4));
 
-      // Test with an empty startresult
-      $sum = $game->previewResult($hand);
-      $this->assertEquals(15, $sum, "Misslyckades med tomt startresult");
+        // Test with an empty startresult
+        $sum = $game->previewResult($hand);
+        $this->assertEquals(15, $sum, "Misslyckades med tomt startresult");
 
-      $game->addHandToList($hand);
+        $game->addHandToList($hand);
 
-      // Test with adding an empty hand, if player gets 0.
-      $sum = $game->sumResult();
-      $this->assertEquals(15, $sum);
+        // Test with adding an empty hand, if player gets 0.
+        $sum = $game->sumResult();
+        $this->assertEquals(15, $sum);
 
-      // Test with adding a hand with 15 to 15 in our hand.
-      $sum = $game->previewResult($hand);
-      $this->assertEquals(30, $sum);
+        // Test with adding a hand with 15 to 15 in our hand.
+        $sum = $game->previewResult($hand);
+        $this->assertEquals(30, $sum);
 
-      $hand = new DiceHand();
-      $hand->add(new Dice(6));
-      $hand->add(new Dice(1));
-      $game->addHandToList($hand);
-      $sum = $game->sumResult();
-      $this->assertEquals(15, $sum, "Hänsyn togs inte till loser hand");
-
+        $hand = new DiceHand();
+        $hand->add(new Dice(6));
+        $hand->add(new Dice(1));
+        $game->addHandToList($hand);
+        $sum = $game->sumResult();
+        $this->assertEquals(15, $sum, "Hänsyn togs inte till loser hand");
     }
 
 
@@ -136,32 +141,31 @@ class DiceGameTest extends TestCase
      */
     public function testHasWon()
     {
-      $game = new DiceGame();
-      $hand = new DiceHand();
-      $hand->add(new Dice(6));
-      $hand->add(new Dice(5));
-      $hand->add(new Dice(4));
+        $game = new DiceGame();
+        $hand = new DiceHand();
+        $hand->add(new Dice(6));
+        $hand->add(new Dice(5));
+        $hand->add(new Dice(4));
 
-      // Test with an empty startresult
-      $sum = $game->hasWon($hand);
-      $this->assertFalse($sum, "På något vis vann vi utan att nå 100");
+        // Test with an empty startresult
+        $sum = $game->hasWon($hand);
+        $this->assertFalse($sum, "På något vis vann vi utan att nå 100");
 
-      $game->addHandToList($hand);
+        $game->addHandToList($hand);
 
-      // Test with adding 15 to our hand.
-      $sum = $game->hasWon($hand);
-      $this->assertFalse($sum, "På något vis vann vi utan att nå 100");
+        // Test with adding 15 to our hand.
+        $sum = $game->hasWon($hand);
+        $this->assertFalse($sum, "På något vis vann vi utan att nå 100");
 
-      $game->addHandToList($hand);
-      $game->addHandToList($hand);
-      $game->addHandToList($hand);
-      $game->addHandToList($hand);
-      $game->addHandToList($hand);
+        $game->addHandToList($hand);
+        $game->addHandToList($hand);
+        $game->addHandToList($hand);
+        $game->addHandToList($hand);
+        $game->addHandToList($hand);
+        $game->addHandToList($hand);
 
-      // Test with adding points to get over 100.
-      $sum = $game->hasWon($hand);
-      $this->assertTrue($sum, "På något vis vann vi inte när vi nått 100");
+        // Test with adding points to get over 100.
+        $sum = $game->hasWon($hand);
+        $this->assertTrue($sum, "På något vis vann vi inte när vi nått 100");
     }
-
-
 }

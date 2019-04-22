@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 /**
@@ -15,7 +19,7 @@ class DiceGraphic
     */
     public function __construct($dice)
     {
-       $this->dice = $dice;
+        $this->dice = $dice;
     }
 
 

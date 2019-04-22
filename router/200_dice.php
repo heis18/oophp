@@ -1,5 +1,11 @@
 <?php
+
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 use Heis\Dice\Dice;
+
 /**
  * Create routes using $app programming style.
  */
@@ -12,8 +18,8 @@ use Heis\Dice\Dice;
  */
 $app->router->get("dice/init", function () use ($app) {
     // Init the session too start the game.
-    // $game = new Heis\Dice\DiceGame();
-    // $_SESSION["game"] = $game;
+    $game = new Heis\Dice\DiceBoard();
+    $_SESSION["game"] = $game;
 
     return $app->response->redirect("dice/play");
 });
@@ -27,23 +33,7 @@ $app->router->get("dice/init", function () use ($app) {
  $app->router->get("dice/play", function () use ($app) {
      $title = "Play the game";
 
-     $board= new Heis\Dice\DiceBoard();
-
-     $p1 = $board->getPlayer1();
-     $c1 = $board->getComputer();
-
-     //$hand = new Heis\Dice\DiceHand(0);
-     // $hand->roll();
-     // $p1->addHandToList($hand);
-     //$hand = new DiceHand();
-     //$c1->addHandToList($hand);
-     //$hand = new Heis\Dice\DiceHand();
-     $hand = $p1->currentHand();
-     $hand->roll();
-     //$p1->addHandToList($hand);
-
-
-
+     $board = $_SESSION["game"] ?? new Heis\Dice\DiceBoard();
 
 
      $data = [
@@ -59,31 +49,73 @@ $app->router->get("dice/init", function () use ($app) {
 
 
 
- $app->router->post("dice/roll", function () use ($app) {
+ $app->router->post("dice/roll/", function () use ($app) {
+     $board = $_SESSION["game"] ?? null;
 
 
+     if ($board == null) {
+       return $app->response->redirect("dice/init");
+     }
+
+     $player = $board->getPlayer1();
+
+     $hand = new Heis\Dice\DiceHand();
+     $hand->roll();
+
+
+     if ($player->isHandValid($hand)) {
+       $player->currentHand()->addHandToHand($hand);
+     } else {
+       $player->currentHand()->addHandToHand($hand);
+     }
 
    return $app->response->redirect("dice/play");
 
  });
 
 
+ $app->router->post("dice/next", function () use ($app) {
+   $board = $_SESSION["game"] ?? null;
+   if ($board == null) {
+     return $app->response->redirect("dice/init");
+   }
 
- $app->router->post("dice/save", function () use ($app) {
+     $player = $board->getPlayer1();
+     $computer = $board->getComputer();
+     $currentPlayer = $board->getCurrentPlayer();
+     $board->nextPlayer();
 
+     if ($currentPlayer == $computer) {
+       $board->nextRound();
+     }
 
 
    return $app->response->redirect("dice/play");
-
  });
-
 
 
 
  $app->router->post("dice/player2", function () use ($app) {
+   $board = $_SESSION["game"] ?? null;
+   if ($board == null) {
+     return $app->response->redirect("dice/init");
+   }
 
+   $player = $board->getComputer();
 
+   $hand = new Heis\Dice\DiceHand();
+   $hand->roll();
 
-   return $app->response->redirect("dice/play");
+   if ($player->isHandValid($hand)) {
+      if ($hand->sum() <11) {
+        $hand2 = new Heis\Dice\DiceHand();
+        $hand2->roll();
+        $hand->addHandToHand($hand2);
+      }
+   }
+
+   $player->currentHand()->addHandToHand($hand);
+
+  return $app->response->redirect("dice/play");
 
  });

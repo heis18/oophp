@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 use PHPUnit\Framework\TestCase;
@@ -23,9 +27,10 @@ class DiceTest extends TestCase
      */
     public function testRollDice()
     {
-      $dice = new Dice();
-      $dice->roll();
-      $this->assertNotEquals(-1, $dice->getNumber());    }
+        $dice = new Dice();
+        $dice->roll();
+        $this->assertNotEquals(-1, $dice->getNumber());
+    }
 
 
     /**
@@ -55,5 +60,4 @@ class DiceTest extends TestCase
         $rollRes = $dice->roll();
         $this->assertEquals($rollRes, $dice->getLastRoll());
     }
-
 }

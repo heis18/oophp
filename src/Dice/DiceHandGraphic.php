@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 /**
@@ -26,14 +30,13 @@ class DiceHandGraphic
      */
     public function graphic()
     {
+        $res = "<div>";
+        foreach ($this->hand->dices() as $key => $dice) {
+            $gr = new DiceGraphic($dice);
+            $res .= "<i class='dice-sprite ".$gr->graphic()."'></i>";
+        }
 
-      $res = "<div>";
-      foreach ($this->hand->dices() as $key => $dice) {
-        $gr = new DiceGraphic($dice);
-        $res .= "<i class='dice-sprite ".$gr->graphic()."'></i>";
-      }
-
-      $res .= "</div>";
-      return $res;
+        $res .= "</div>";
+        return $res;
     }
 }

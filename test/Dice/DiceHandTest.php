@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 use PHPUnit\Framework\TestCase;
@@ -23,12 +27,11 @@ class DiceHandTest extends TestCase
      */
     public function testRollDice()
     {
-      $hand = new DiceHand();
-      $hand->roll();
-      foreach ($hand->dices() as $key => $dice) {
-          $this->assertTrue($dice->getNumber()>0 && $dice->getNumber()<7);
-      }
-
+        $hand = new DiceHand();
+        $hand->roll();
+        foreach ($hand->dices() as $key => $dice) {
+            $this->assertTrue($dice->getNumber()>0 && $dice->getNumber()<7);
+        }
     }
 
     /**
@@ -36,18 +39,18 @@ class DiceHandTest extends TestCase
      */
     public function testAddDice()
     {
-      $hand = new DiceHand(0);
+        $hand = new DiceHand(0);
 
-      $this->assertEquals(0, count($hand->dices()));
+        $this->assertEquals(0, count($hand->dices()));
 
-      $hand->add(new Dice(6));
+        $hand->add(new Dice(6));
 
-      $this->assertEquals(1, count($hand->dices()));
+        $this->assertEquals(1, count($hand->dices()));
 
-      $hand->add(new Dice(5));
-      $hand->add(new Dice(4));
+        $hand->add(new Dice(5));
+        $hand->add(new Dice(4));
 
-      $this->assertEquals(3, count($hand->dices()), "Misslyckades med att lägga till flera i listan.");
+        $this->assertEquals(3, count($hand->dices()), "Misslyckades med att lägga till flera i listan.");
     }
 
     /**
@@ -55,18 +58,18 @@ class DiceHandTest extends TestCase
      */
     public function testSumValuesFromDices()
     {
-      $hand = new DiceHand(0);
+        $hand = new DiceHand(0);
 
-      $this->assertEquals(0, ($hand->sum()));
+        $this->assertEquals(0, ($hand->sum()));
 
-      $hand->add(new Dice(6));
+        $hand->add(new Dice(6));
 
-      $this->assertEquals(6, ($hand->sum()));
+        $this->assertEquals(6, ($hand->sum()));
 
-      $hand->add(new Dice(1));
-      $hand->add(new Dice(4));
+        $hand->add(new Dice(1));
+        $hand->add(new Dice(4));
 
-      $this->assertEquals(11, ($hand->sum()), "Misslyckades med att summera tärningarna.");
+        $this->assertEquals(11, ($hand->sum()), "Misslyckades med att summera tärningarna.");
     }
 
     /**
@@ -74,16 +77,16 @@ class DiceHandTest extends TestCase
     */
     public function testGetHand()
     {
-      $game = new DiceGame();
+        $game = new DiceGame();
 
-      $this->assertEquals(null, $game->getHand(0));
-      $this->assertEquals(null, $game->getHand(1));
+        $this->assertEquals(null, $game->getHand(0));
+        $this->assertEquals(null, $game->getHand(1));
 
-      $hand = new DiceHand(0);
-      $hand->add(new Dice(6));
-      $game->addHandToList($hand);
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(6));
+        $game->addHandToList($hand);
 
-      $this->assertNotEquals(null, $game->getHand(0));
-      $this->assertEquals(null, $game->getHand(1));
+        $this->assertNotEquals(null, $game->getHand(0));
+        $this->assertEquals(null, $game->getHand(1));
     }
 }

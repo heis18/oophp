@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 use PHPUnit\Framework\TestCase;
@@ -23,8 +27,8 @@ class DiceBoardTest extends TestCase
      */
     public function testGetPlayer1()
     {
-      $board = new DiceBoard();
-      $this->assertNotEquals(null, $board->getPlayer1());
+        $board = new DiceBoard();
+        $this->assertNotEquals(null, $board->getPlayer1());
     }
 
 
@@ -33,8 +37,8 @@ class DiceBoardTest extends TestCase
      */
     public function testGetComputer()
     {
-      $board = new DiceBoard();
-      $this->assertNotEquals(null, $board->getComputer());
+        $board = new DiceBoard();
+        $this->assertNotEquals(null, $board->getComputer());
     }
 
 
@@ -83,5 +87,4 @@ class DiceBoardTest extends TestCase
         $p1->addHandToList($hand);
         $this->assertNotEquals(null, $board->getWinner());
     }
-
 }

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 class Dice
@@ -11,7 +15,7 @@ class Dice
     private $number;
 
 
-    public function __construct($val= -1)
+    public function __construct($val = -1)
     {
         $this->number = $val;
     }
@@ -19,7 +23,7 @@ class Dice
 
 
     /**
-     * Randomize the secret number between 1 and 6 to initiate a new game.
+     * Randomize the dicenumber between 1 and 6 to initiate a new game.
      *
      * @return void
      */
@@ -32,22 +36,24 @@ class Dice
 
 
 
-    /**
-    * A function that saves the last roll
-    */
+      /**
+      * A function that saves the last rolled dice
+      *
+      *@return int
+      */
     public function getNumber()
     {
         return $this->number;
     }
 
 
-    /**
-    * New function that do the same as getNumber
-    */
+      /**
+      * New function that do the same as getNumber
+      *
+      *@return int
+      */
     public function getLastRoll()
     {
         return $this->number;
     }
-
-
 }

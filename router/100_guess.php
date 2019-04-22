@@ -70,7 +70,7 @@ $app->router->get("guess/play", function () use ($app) {
        // Do a guess
         $_SESSION["game"] = new Heis\Guess\Guess();
     } elseif ($doInit != null) {
-        $_SESSION["game"] = new Heis\Guess\ Guess();
+        $_SESSION["game"] = new Heis\Guess\Guess();
     }
 
     $game = $_SESSION["game"];

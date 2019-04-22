@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Helena Isåfjäll <heis18@student.bth.se>
+ */
+
 namespace Heis\Dice;
 
 /**
@@ -17,7 +21,7 @@ class DiceHand
       /**
        * Constructor to initiate the dicehand with a number of dices.
        *
-       * @param int $dices Number of dices to create, defaults to five.
+       * @param int $dices Number of dices to create, defaults three.
        */
     public function __construct(int $dices = 3)
     {
@@ -57,15 +61,15 @@ class DiceHand
     }
 
 
-    /**
-     * Get the dices from last roll.
-     *
-     * @return array with values of the last roll.
-     */
-  public function dices()
-  {
+      /**
+       * Get the dices from last roll.
+       *
+       * @return array with values of the last roll.
+       */
+    public function dices()
+    {
         return $this->dices;
-  }
+    }
 
       /**
        * Get values of dices from last roll.
@@ -74,7 +78,7 @@ class DiceHand
        */
     public function values()
     {
-          return $this->values;
+        return $this->values;
     }
 
 
@@ -83,9 +87,11 @@ class DiceHand
      *
      * @return int as the sum of all values.
      */
-    public function addHandToHand()
+    public function addHandToHand($hand)
     {
-
+        foreach ($hand->dices as $key => $dice) {
+            $this->add($dice);
+        }
     }
 
 
@@ -102,6 +108,4 @@ class DiceHand
         }
           return $res;
     }
-
-
 }
