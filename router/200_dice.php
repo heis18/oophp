@@ -7,13 +7,6 @@
 use Heis\Dice\Dice;
 
 /**
- * Create routes using $app programming style.
- */
-//var_dump(array_keys(get_defined_vars()));
-
-
-
-/**
  * Init the guess-game and direct to play the game.
  */
 $app->router->get("dice/init", function () use ($app) {
@@ -32,9 +25,7 @@ $app->router->get("dice/init", function () use ($app) {
 
  $app->router->get("dice/play", function () use ($app) {
      $title = "Play the game";
-
      $board = $_SESSION["game"] ?? new Heis\Dice\DiceBoard();
-
 
      $data = [
          "board" => $board,
@@ -49,10 +40,8 @@ $app->router->get("dice/init", function () use ($app) {
 
 
 
- $app->router->post("dice/roll/", function () use ($app) {
+ $app->router->post("dice/roll", function () use ($app) {
      $board = $_SESSION["game"] ?? null;
-
-
      if ($board == null) {
        return $app->response->redirect("dice/init");
      }
@@ -62,14 +51,14 @@ $app->router->get("dice/init", function () use ($app) {
      $hand = new Heis\Dice\DiceHand();
      $hand->roll();
 
+     $player->currentHand()->addHandToHand($hand);
 
-     if ($player->isHandValid($hand)) {
-       $player->currentHand()->addHandToHand($hand);
-     } else {
-       $player->currentHand()->addHandToHand($hand);
+     //if player has won, the result is saved in the table
+     if ($player->hasWon($player->currentHand())) {
+        $player->addHandToList($player->currentHand());
      }
 
-   return $app->response->redirect("dice/play");
+     return $app->response->redirect("dice/play");
 
  });
 
@@ -80,42 +69,18 @@ $app->router->get("dice/init", function () use ($app) {
      return $app->response->redirect("dice/init");
    }
 
-     $player = $board->getPlayer1();
-     $computer = $board->getComputer();
      $currentPlayer = $board->getCurrentPlayer();
      $board->nextPlayer();
 
-     if ($currentPlayer == $computer) {
+     // get to next round computer rolled his dices
+     if ($currentPlayer == $board->getComputer()) {
        $board->nextRound();
+
+     // when player1 activate"next"
+     // we roll the dices for the computer
+   } else {
+        $board->playComputer();
      }
 
-
    return $app->response->redirect("dice/play");
- });
-
-
-
- $app->router->post("dice/player2", function () use ($app) {
-   $board = $_SESSION["game"] ?? null;
-   if ($board == null) {
-     return $app->response->redirect("dice/init");
-   }
-
-   $player = $board->getComputer();
-
-   $hand = new Heis\Dice\DiceHand();
-   $hand->roll();
-
-   if ($player->isHandValid($hand)) {
-      if ($hand->sum() <11) {
-        $hand2 = new Heis\Dice\DiceHand();
-        $hand2->roll();
-        $hand->addHandToHand($hand2);
-      }
-   }
-
-   $player->currentHand()->addHandToHand($hand);
-
-  return $app->response->redirect("dice/play");
-
  });

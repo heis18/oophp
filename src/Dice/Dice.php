@@ -14,13 +14,10 @@ class Dice
 
     private $number;
 
-
     public function __construct($val = -1)
     {
         $this->number = $val;
     }
-
-
 
     /**
      * Randomize the dicenumber between 1 and 6 to initiate a new game.
@@ -37,9 +34,9 @@ class Dice
 
 
       /**
-      * A function that saves the last rolled dice
+      * A function that gets the current dice value
       *
-      *@return int
+      *@return int value of the dice
       */
     public function getNumber()
     {
@@ -50,7 +47,7 @@ class Dice
       /**
       * New function that do the same as getNumber
       *
-      *@return int
+      *@return int value of the dice
       */
     public function getLastRoll()
     {

@@ -19,17 +19,12 @@ class DiceGame
      * @var int $winlimit     The limit of points to reach to win the game.
      * @var int $currentHand  The current hand of dices.
      * @var string $name      Who is playing the game.
-
-
      */
-    private $hasWon;
+    private $hasWon; //TODO används denna?
     private $diceHands;
     private $winlimit;
     private $currentHand;
     private $name;
-
-
-
 
     public function __construct()
     {
@@ -52,22 +47,11 @@ class DiceGame
 
 
     /**
-     * Set which player is playing.
+     * Set name of player who is playing.
      */
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-
-    /**
-     * Roll all dices save their value.
-     *
-     * @return int with numbers from the dices.
-     */
-    public function roll()
-    {
-        return new DiceHand();
     }
 
 
@@ -89,7 +73,7 @@ class DiceGame
     /**
      * Check if the hand is valid or not, if it has a 1 in it.
      *
-     * @return bool.
+     * @return bool true if the hand is ok.
      */
     public function isHandValid($hand)
     {
@@ -107,7 +91,7 @@ class DiceGame
 
     /**
      * Add a result from hand.
-     *
+     * //TODO DENNA KOMMENTAREN ÄR FEL.
      * @return int as the sum of all values.
      */
     public function diceHands()
@@ -117,7 +101,7 @@ class DiceGame
 
     /**
      * Add a result from hand.
-     *
+     * //TODO DENNA KOMMENTAREN ÄR FEL
      * @return int as the sum of all values.
      */
     public function currentHand()
@@ -129,7 +113,7 @@ class DiceGame
 
     /**
      * Add a result from hand to the list of saved result.
-     *
+     * //TODO DENNA KOMMENTAREN ÄR FEL
      * @return int as the sum of all values.
      */
     public function addHandToList($hand)
@@ -140,7 +124,7 @@ class DiceGame
 
 
     /**
-     * Get a new empty hand when you start a new round.
+     * Create a new hand when you start a new round.
      *
      * @return void
      */
@@ -151,7 +135,7 @@ class DiceGame
 
 
     /**
-     * Sum the new hand with the allready saved hand.
+     * Sum the new hand with the already saved hand.
      *
      * @return int as the sum of all values.
      */
@@ -169,7 +153,7 @@ class DiceGame
     /**
      * Get the sum of all dices.
      *
-     * @return int as the sum of all dices, if the hand is valid.
+     * @return int as the sum of all valid dices, if the hand is valid.
      */
     public function sumHand($hand)
     {
@@ -199,56 +183,16 @@ class DiceGame
 
 
     /**
-     * Get the resulte of who won the game.
+     * Get the result if this player has won the game.
      *
      * @return bool as the result.
      */
     public function hasWon($currentHand)
     {
-        if ($this->sumResult($currentHand) >= $this->winlimit) {
+        if (($this->sumResult()+$this->sumHand($currentHand)) >= $this->winlimit) {
             return true;
         }
 
         return false;
     }
-
-
-
-
-
-    //
-    // /**
-    //  * Make a guess, decrease remaining guesses and return a string stating
-    //  * if the guess was correct, too low or to high or if no guesses remains.
-    //  *
-    //  * @throws DiceException when guessed number is out of bounds.
-    //  *
-    //  * @return string to show the status of the guess made.
-    //  */
-    //
-    // public function makeGuess($number)
-    // {
-    //     // if ($this->tries >=5 ) {
-    //     //     throw new Exception("WRONG, Out of tries, YOU LOST!");
-    //     // }
-    //
-    //     if ($number == $this->number) {
-    //         $this->hasWon = true;
-    //         return "CORRECT, CONGRATULATIONS!";
-    //     } elseif ($number > 100 || $number < 1) {
-    //         throw new DiceException("SORRY, YOUR GUESS IS OUT OF BOUNDS");
-    //     } elseif ($number > $this->number) {
-    //         $this->tries = $this->tries +1;
-    //         if ($this->tries() == 0) {
-    //             return "TOO HIGH! SORRY, YOU ARE OUT OF GUESSES, YOU LOST!";
-    //         }
-    //         return "TOO HIGH";
-    //     } elseif ($number < $this->number) {
-    //         $this->tries = $this->tries +1;
-    //         if ($this->tries() == 0) {
-    //             return "TOO LOW! SORRY, YOU ARE OUT OF GUESSES, YOU LOST!";
-    //         }
-    //         return "TOO LOW";
-    //     }
-    // }
 }

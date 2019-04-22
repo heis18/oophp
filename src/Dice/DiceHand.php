@@ -34,7 +34,6 @@ class DiceHand
         }
     }
 
-
       /**
        * Roll all dices save their value.
        *
@@ -48,7 +47,6 @@ class DiceHand
         }
     }
 
-
       /**
        * Add a dices.
        *
@@ -60,21 +58,20 @@ class DiceHand
         $this->values[] = $dice->getNumber();
     }
 
-
-      /**
-       * Get the dices from last roll.
-       *
-       * @return array with values of the last roll.
-       */
+    /**
+     * Get the dices from last roll.
+     *
+     * @return array of Dice dices
+     */
     public function dices()
     {
         return $this->dices;
     }
 
       /**
-       * Get values of dices from last roll.
+       * Get values of dices from hand.
        *
-       * @return array with values of the last roll.
+       * @return array with values of the hand.
        */
     public function values()
     {
@@ -85,6 +82,7 @@ class DiceHand
     /**
      * Add a result from hand to another unsaved hand, if you want to keep roll.
      *
+     * // TODO INCORRECT COMMENT
      * @return int as the sum of all values.
      */
     public function addHandToHand($hand)
@@ -102,10 +100,11 @@ class DiceHand
        */
     public function sum()
     {
-          $res = 0;
-        for ($i=0; $i < count($this->values); $i++) {
-              $res =  $res + $this->values[$i];
+        $res = 0;
+        for ($i = 0; $i < count($this->values); $i++) {
+            $res =  $res + $this->values[$i];
         }
-          return $res;
+
+        return $res;
     }
 }

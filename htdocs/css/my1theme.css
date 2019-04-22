@@ -6621,7 +6621,7 @@ input {
   font-size: 20px;
   background-color: #dcdaec;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.05);
-  margin-top: 4em;
+  margin-top: 3em;
   margin-bottom: 3em;
 }
 .dices {
@@ -6631,9 +6631,10 @@ input {
   padding: 0.5em;
   padding-left: 2em;
   padding-right: 2em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+}
+.game100Buttons {
+  float: none;
+  display: inline-flex;
 }
 .gametable {
   border: 2px solid aliceblue;
@@ -6651,6 +6652,24 @@ input {
 }
 .gametable tr:first-child {
   border-bottom: 1px solid aliceblue;
+  font-weight: bold;
+  background-color: #bf8fce;
+}
+.gametable tr:last-child {
+  border-bottom: 1px solid aliceblue;
+  font-weight: bold;
+  background-color: #bf8fce;
+}
+.winner {
+  border: 2px solid aliceblue;
+  background-color: #fad2fb;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+.winner h2 {
+  border-bottom: none;
   font-weight: bold;
 }
 /**

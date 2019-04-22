@@ -15,7 +15,8 @@ class DiceHandGraphic
 
     private $hand;
     /**
-    *Constructor to initiate the dice with six sides.
+    * Constructor to initiate the dice with six sides.
+    * @var DiceHand $hand - the hand to draw. 
     */
     public function __construct($hand)
     {

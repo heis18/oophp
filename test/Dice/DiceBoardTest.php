@@ -87,4 +87,39 @@ class DiceBoardTest extends TestCase
         $p1->addHandToList($hand);
         $this->assertNotEquals(null, $board->getWinner());
     }
+
+
+    /**
+     * Test if computer can roll dice again.
+     */
+    public function testPlayComputerWinLogic()
+    {
+      $board = new DiceBoard();
+      $c1 = $board->getComputer();
+      $hand = new DiceHand();
+      $hand->add(new Dice(93));
+
+
+      $c1->addHandToList($hand);
+
+      $hand = new DiceHand();
+      $hand->add(new Dice(6));
+
+      $this->assertFalse($board->computerHasEnough($hand));
+
+      $hand = new DiceHand();
+      $hand->add(new Dice(5));
+      $hand->add(new Dice(2));
+      $hand->add(new Dice(2));
+
+      $this->assertTrue($board->computerHasEnough($hand));
+
+
+
+      $hand = new DiceHand();
+      $hand->add(new Dice(6));
+      $hand->add(new Dice(1));
+
+      $this->assertTrue($board->computerHasEnough($hand));
+    }
 }

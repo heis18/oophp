@@ -16,6 +16,7 @@ class DiceGraphic
 
     /**
     *Constructor to initiate the dice with six sides.
+    * @var int $dice the value for the dice
     */
     public function __construct($dice)
     {

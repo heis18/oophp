@@ -16,13 +16,12 @@ class DiceBoard
     /**
      * @var int $round    Number of which round the game is in.
      * @var bool $players Which players is involved in the game.
-
+     * @var int $currentPlayer Which is the current player
      */
 
     private $round;
     private $players;
     private $currentPlayer;
-
 
     public function __construct()
     {
@@ -58,7 +57,6 @@ class DiceBoard
         return $this->players [1];
     }
 
-
   /**
    * Get the number of the round of the game.
    *
@@ -71,6 +69,7 @@ class DiceBoard
 
     /**
      * Create the next round in the game.
+     * @return void
      */
     public function nextRound()
     {
@@ -79,7 +78,9 @@ class DiceBoard
         $this->getComputer()->createNewCurrentHand();
     }
 
-
+    /*
+      // TODO MISSING COMMENT
+    */
     public function nextPlayer()
     {
         $curPla = $this->getCurrentPlayer();
@@ -93,7 +94,7 @@ class DiceBoard
     }
 
     /**
-     * Get which players is the activ player.
+     * Get which players is the active player.
      *
      * @return DiceGame with player.
      */
@@ -102,24 +103,65 @@ class DiceBoard
         return $this->players[$this->currentPlayer];
     }
 
-
     /**
-     * Get the winning player in the game.
+     * Get the spelet är: Player 1 winning player in the game.
      *
      * @return DiceGame with winning player.
      */
     public function getWinner()
     {
         $p1 = $this->getPlayer1();
-        if ($p1->hasWon($p1->currentHand())) {
+        if ($p1->hasWon(new DiceHand())) {
             return $p1;
         }
 
         $c1 = $this->getComputer();
-        if ($c1->hasWon($c1->currentHand())) {
+        if ($c1->hasWon(new DiceHand())) {
             return $c1;
         }
 
         return null;
+    }
+
+    /*
+      // TODO MISSING COMMENT
+    */
+    public function computerHasEnough($hand){
+      $computer = $this->getComputer();
+      if (false == $computer->isHandValid($hand)) {
+        return true;
+      }
+
+      if ($computer->hasWon($hand)) {
+          return true;
+      }
+
+      if ($hand->sum() > 11) {
+           return true;
+      }
+
+      return false;
+    }
+
+    /*
+      // TODO MISSING COMMENT
+    */
+    public function playComputer()
+    {
+        $computer = $this->getComputer();
+        $hand = new DiceHand();
+        $hand->roll();
+        if ($this->computerHasEnough($hand) == false) {
+            $hand2 = new DiceHand();
+            $hand2->roll();
+            $hand->addHandToHand($hand2);
+        }
+
+        $computer->currentHand()->addHandToHand($hand);
+
+        //if player has won, the result is saved in the table
+        if ($computer->hasWon($computer->currentHand())) {
+           $computer->addHandToList($computer->currentHand());
+        }
     }
 }
