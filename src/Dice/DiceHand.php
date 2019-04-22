@@ -92,7 +92,7 @@ class DiceHand
      */
     public function addHandToHand($hand)
     {
-        foreach ($hand->dices as $key => $dice) {
+        foreach ($hand->dices as $dice) {
             $this->add($dice);
         }
     }

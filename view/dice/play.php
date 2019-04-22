@@ -58,23 +58,15 @@ $currentPlayer = $board->getCurrentPlayer();
 
 <div class= "dices">
 
-  <?php
-   $p1g = new DiceHandGraphic($currentPlayer->currentHand());
-  ?>
+    <?php
+    $p1g = new DiceHandGraphic($currentPlayer->currentHand());
+    ?>
 
 <h4><b>Aktivt tärningskast i omgång <?= $board->getRound();?></b></h4>
 <p> Aktiva tärningar:  <?= $p1g->graphic(); ?></p>
 <p> Summan av aktiva tärningar: ... <?= $currentPlayer->currentHand()->sum() ?></p>
 
 </div>
-
-
-
-
-
-
-
-
 
 
 

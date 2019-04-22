@@ -14,22 +14,13 @@ use PHPUnit\Framework\TestCase;
 class DiceHandTest extends TestCase
 {
     /**
-     * Just assert something is true.
-     */
-    public function testTrue()
-    {
-        $this->assertTrue(true);
-    }
-
-
-    /**
      * Test if we can roll dices and get result.
      */
     public function testRollDice()
     {
         $hand = new DiceHand();
         $hand->roll();
-        foreach ($hand->dices() as $key => $dice) {
+        foreach ($hand->dices() as $dice) {
             $this->assertTrue($dice->getNumber()>0 && $dice->getNumber()<7);
         }
     }

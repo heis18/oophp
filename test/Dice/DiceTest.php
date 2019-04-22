@@ -14,15 +14,6 @@ use PHPUnit\Framework\TestCase;
 class DiceTest extends TestCase
 {
     /**
-     * Just assert something is true.
-     */
-    public function testTrue()
-    {
-        $this->assertTrue(true);
-    }
-
-
-    /**
      * Test if we can get a values from the dice.
      */
     public function testRollDice()

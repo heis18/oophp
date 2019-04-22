@@ -16,21 +16,13 @@ use Exception;
 class DiceGameTest extends TestCase
 {
     /**
-     * Just assert something is true.
-     */
-    public function testTrue()
-    {
-        $this->assertTrue(true);
-    }
-    
-    /**
      * Test is the hand is valide, if it contains a one ore not.
      */
     public function testIfHandIsValidException()
     {
         $game = new DiceGame();
         $this->expectException(Exception::class);
-        $handIsValid = $game->isHandValid(null);
+        $game->isHandValid(null);
     }
 
 

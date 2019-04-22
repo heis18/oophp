@@ -39,46 +39,46 @@ $app->router->get("dice/init", function () use ($app) {
  });
 
  $app->router->post("dice/roll", function () use ($app) {
-     $board = $_SESSION["game"] ?? null;
-     if ($board == null) {
-       return $app->response->redirect("dice/init");
-     }
+    $board = $_SESSION["game"] ?? null;
+    if ($board == null) {
+        return $app->response->redirect("dice/init");
+    }
 
-     $player = $board->getPlayer1();
+    $player = $board->getPlayer1();
 
-     $hand = new Heis\Dice\DiceHand();
-     $hand->roll();
+    $hand = new Heis\Dice\DiceHand();
+    $hand->roll();
 
-     $player->currentHand()->addHandToHand($hand);
+    $player->currentHand()->addHandToHand($hand);
 
      //if player has won, the result is saved in the table
-     if ($player->hasWon($player->currentHand())) {
+    if ($player->hasWon($player->currentHand())) {
         $player->addHandToList($player->currentHand());
-     }
+    }
 
-     return $app->response->redirect("dice/play");
-
+    return $app->response->redirect("dice/play");
  });
 
 
+
  $app->router->post("dice/next", function () use ($app) {
-   $board = $_SESSION["game"] ?? null;
-   if ($board == null) {
-     return $app->response->redirect("dice/init");
-   }
+    $board = $_SESSION["game"] ?? null;
+    if ($board == null) {
+        return $app->response->redirect("dice/init");
+    }
 
-     $currentPlayer = $board->getCurrentPlayer();
-     $board->nextPlayer();
+    $currentPlayer = $board->getCurrentPlayer();
+    $board->nextPlayer();
 
-     // get to next round computer rolled his dices
-     if ($currentPlayer == $board->getComputer()) {
-       $board->nextRound();
+      // get to next round computer rolled his dices
+    if ($currentPlayer == $board->getComputer()) {
+        $board->nextRound();
 
-     // when player1 activate"next"
-     // we roll the dices for the computer
-   } else {
+      // when player1 activate"next"
+      // we roll the dices for the computer
+    } else {
         $board->playComputer();
-     }
+    }
 
-   return $app->response->redirect("dice/play");
+    return $app->response->redirect("dice/play");
  });

@@ -10,24 +10,24 @@ namespace Heis\Dice;
 use Exception;
 
 /**
- * A board for guess my number.
+ * A board for a roll dices game.
  */
 class DiceBoard
 {
     /**
      * @var int $round Number of which round the game is in.
      */
-     private $round;
+    private $round;
 
      /**
      * @var DiceGame $players Which players is involved in the game.
      */
-     private $players;
+    private $players;
 
      /**
      * @var int $currentPlayer Which is the current player
      */
-     private $currentPlayer;
+    private $currentPlayer;
 
      /**
      * Create a new DiceGame with one player and a computer.
@@ -93,10 +93,10 @@ class DiceBoard
         $curPla = $this->getCurrentPlayer();
         $curPla->addHandToList($curPla->currentHand());
 
-        if($this->currentPlayer == 0) {
-          $this->currentPlayer = 1;
-        } else{
-          $this->currentPlayer = 0;
+        if ($this->currentPlayer == 0) {
+            $this->currentPlayer = 1;
+        } else {
+            $this->currentPlayer = 0;
         }
     }
 
@@ -117,14 +117,14 @@ class DiceBoard
      */
     public function getWinner()
     {
-        $p1 = $this->getPlayer1();
-        if ($p1->hasWon(new DiceHand())) {
-            return $p1;
+        $pl1 = $this->getPlayer1();
+        if ($pl1->hasWon(new DiceHand())) {
+            return $pl1;
         }
 
-        $c1 = $this->getComputer();
-        if ($c1->hasWon(new DiceHand())) {
-            return $c1;
+        $comp1 = $this->getComputer();
+        if ($comp1->hasWon(new DiceHand())) {
+            return $comp1;
         }
 
         return null;
@@ -135,21 +135,22 @@ class DiceBoard
     *
     * @param DiceHand $hand the hand to check.
     */
-    public function computerHasEnough($hand){
-      $computer = $this->getComputer();
-      if (false == $computer->isHandValid($hand)) {
-        return true;
-      }
+    public function computerHasEnough($hand)
+    {
+        $computer = $this->getComputer();
+        if (false == $computer->isHandValid($hand)) {
+            return true;
+        }
 
-      if ($computer->hasWon($hand)) {
-          return true;
-      }
+        if ($computer->hasWon($hand)) {
+            return true;
+        }
 
-      if ($hand->sum() > 11) {
-           return true;
-      }
+        if ($hand->sum() > 11) {
+            return true;
+        }
 
-      return false;
+        return false;
     }
 
     /**
@@ -170,7 +171,7 @@ class DiceBoard
 
         //if player has won, the result is saved in the table
         if ($computer->hasWon($computer->currentHand())) {
-           $computer->addHandToList($computer->currentHand());
+            $computer->addHandToList($computer->currentHand());
         }
     }
 }

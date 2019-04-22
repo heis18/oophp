@@ -159,7 +159,7 @@ class DiceGame
     public function sumResult()
     {
         $res = 0;
-        foreach ($this->diceHands as $key => $hand) {
+        foreach ($this->diceHands as $hand) {
             $res = $res + $this->sumHand($hand);
         }
 

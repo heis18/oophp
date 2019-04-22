@@ -14,15 +14,6 @@ use PHPUnit\Framework\TestCase;
 class DiceBoardTest extends TestCase
 {
     /**
-     * Just assert something is true.
-     */
-    public function testTrue()
-    {
-        $this->assertTrue(true);
-    }
-
-
-    /**
      * Test if we can get a player1.
      */
     public function testGetPlayer1()
@@ -57,7 +48,7 @@ class DiceBoardTest extends TestCase
     public function testGetWinner()
     {
         $board = new DiceBoard();
-        $p1 = $board->getPlayer1();
+        $pl1 = $board->getPlayer1();
         $hand = new DiceHand();
         $hand->add(new Dice(6));
         $hand->add(new Dice(6));
@@ -84,7 +75,7 @@ class DiceBoardTest extends TestCase
         $hand->add(new Dice(6));
         $hand->add(new Dice(6));
 
-        $p1->addHandToList($hand);
+        $pl1->addHandToList($hand);
         $this->assertNotEquals(null, $board->getWinner());
     }
 
@@ -94,32 +85,32 @@ class DiceBoardTest extends TestCase
      */
     public function testPlayComputerWinLogic()
     {
-      $board = new DiceBoard();
-      $c1 = $board->getComputer();
-      $hand = new DiceHand();
-      $hand->add(new Dice(93));
+        $board = new DiceBoard();
+        $comp1 = $board->getComputer();
+        $hand = new DiceHand();
+        $hand->add(new Dice(93));
 
 
-      $c1->addHandToList($hand);
+        $comp1->addHandToList($hand);
 
-      $hand = new DiceHand();
-      $hand->add(new Dice(6));
+        $hand = new DiceHand();
+        $hand->add(new Dice(6));
 
-      $this->assertFalse($board->computerHasEnough($hand));
+        $this->assertFalse($board->computerHasEnough($hand));
 
-      $hand = new DiceHand();
-      $hand->add(new Dice(5));
-      $hand->add(new Dice(2));
-      $hand->add(new Dice(2));
+        $hand = new DiceHand();
+        $hand->add(new Dice(5));
+        $hand->add(new Dice(2));
+        $hand->add(new Dice(2));
 
-      $this->assertTrue($board->computerHasEnough($hand));
+        $this->assertTrue($board->computerHasEnough($hand));
 
 
 
-      $hand = new DiceHand();
-      $hand->add(new Dice(6));
-      $hand->add(new Dice(1));
+        $hand = new DiceHand();
+        $hand->add(new Dice(6));
+        $hand->add(new Dice(1));
 
-      $this->assertTrue($board->computerHasEnough($hand));
+        $this->assertTrue($board->computerHasEnough($hand));
     }
 }

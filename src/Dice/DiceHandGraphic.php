@@ -32,7 +32,7 @@ class DiceHandGraphic
     public function graphic()
     {
         $res = "<div>";
-        foreach ($this->hand->dices() as $key => $dice) {
+        foreach ($this->hand->dices() as $dice) {
             $gr = new DiceGraphic($dice);
             $res .= "<i class='dice-sprite ".$gr->graphic()."'></i>";
         }
