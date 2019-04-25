@@ -38,6 +38,8 @@ $app->router->get("dice/init", function () use ($app) {
      ]);
  });
 
+
+
  $app->router->post("dice/roll", function () use ($app) {
     $board = $_SESSION["game"] ?? null;
     if ($board == null) {
