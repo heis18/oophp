@@ -44,6 +44,15 @@ class DiceBoardTest extends TestCase
 
 
     /**
+     * Test if we can get a winner on an empty board.
+     */
+    public function testGetWinnerNone()
+    {
+        $board = new DiceBoard;
+        $this->assertEquals(null, $board->getWinner());
+    }
+
+    /**
      * Test if we can get the last rolled dice, as player1.
      */
     public function testGetWinnerPlayer1()
@@ -132,12 +141,12 @@ class DiceBoardTest extends TestCase
 
         $comp1->addHandToList($hand);
 
-        $hand = new DiceHand();
+        $hand = new DiceHand(0);
         $hand->add(new Dice(6));
 
         $this->assertFalse($board->computerHasEnough($hand));
 
-        $hand = new DiceHand();
+        $hand = new DiceHand(0);
         $hand->add(new Dice(5));
         $hand->add(new Dice(2));
         $hand->add(new Dice(2));
@@ -146,10 +155,18 @@ class DiceBoardTest extends TestCase
 
 
 
-        $hand = new DiceHand();
+        $hand = new DiceHand(0);
         $hand->add(new Dice(6));
         $hand->add(new Dice(1));
 
+        $this->assertTrue($board->computerHasEnough($hand));
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(6));
+        $hand->add(new Dice(6));
+
+
+        $board = new DiceBoard();
         $this->assertTrue($board->computerHasEnough($hand));
     }
 
@@ -160,8 +177,16 @@ class DiceBoardTest extends TestCase
     public function testNextPlayer()
     {
         $board = new DiceBoard();
-        $board->getCurrentPlayer(0);
-        $this->assertEquals(null, $board->nextPlayer());
+        $player = $board->getCurrentPlayer();
+        $this->assertEquals($board->getPlayer1(), $player);
+
+        $board->nextPlayer();
+        $player = $board->getCurrentPlayer();
+        $this->assertEquals($board->getComputer(), $player);
+
+        $board->nextPlayer();
+        $player = $board->getCurrentPlayer();
+        $this->assertEquals($board->getPlayer1(), $player);
     }
 
 
@@ -171,7 +196,15 @@ class DiceBoardTest extends TestCase
     public function testGetNextRound()
     {
         $board = new DiceBoard();
-        $board->getRound(2);
-        $this->assertEquals(null, $board->nextRound());
+        $round = $board->getRound();
+        $this->assertEquals(1, $round);
+
+        $board->nextRound();
+        $round = $board->getRound();
+        $this->assertEquals(2, $round);
+
+        $board->nextRound();
+        $round = $board->getRound();
+        $this->assertEquals(3, $round);
     }
 }

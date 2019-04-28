@@ -4,7 +4,8 @@ Först till 100!
 #### Upplagd för ett nytt roligt spel? Spela Tärningsspel först till 100 redan idag!
 
 
-### [Starta ett nytt spel!](dice/init)
+### [Starta ett nytt spel! (route)](dice/init)
+### [Starta ett nytt spel! (controller)](dice1/init)
 
 ## Generella regler för spelet (Vissa undantag kan ibland ske)
 

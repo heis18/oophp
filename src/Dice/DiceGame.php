@@ -220,22 +220,42 @@ class DiceGame implements HistogramInterface
         return false;
     }
 
+
+    /**
+     * Get the numbers of all the dices to put into the histogram.
+     *
+     * @return array of the result.
+     */
     public function getHistogramSerie()
     {
         $res = [];
         foreach ($this->diceHands as $hand) {
-          foreach($hand->values() as $value) {
-              $res[] = $value;
+            foreach ($hand->values() as $value) {
+                $res[] = $value;
             }
         }
         return $res;
     }
 
-    public function getHistogramMax(){
+
+    /**
+     * The highest value in our histogram.
+     *
+     * @return int as the max value.
+     */
+    public function getHistogramMax()
+    {
         return 6;
     }
 
-    public function getHistogramMin(){
+
+    /**
+     * The lowest value in our histogram.
+     *
+     * @return int as the min value.
+     */
+    public function getHistogramMin()
+    {
         return 1;
     }
 }

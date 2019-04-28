@@ -15,6 +15,27 @@ use Exception;
  */
 class DiceGameTest extends TestCase
 {
+
+
+    /**
+    * Test get hand
+    */
+    public function testGetHand()
+    {
+        $game = new DiceGame();
+
+        $this->assertEquals(null, $game->getHand(0));
+        $this->assertEquals(null, $game->getHand(1));
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(6));
+        $game->addHandToList($hand);
+
+        $this->assertNotEquals(null, $game->getHand(0));
+        $this->assertEquals(null, $game->getHand(1));
+    }
+
+
     /**
      * Test is the hand is valide, if it contains a one ore not.
      */
@@ -148,5 +169,59 @@ class DiceGameTest extends TestCase
         // Test with adding points to get over 100.
         $sum = $game->hasWon($hand);
         $this->assertTrue($sum, "På något vis vann vi inte när vi nått 100");
+    }
+
+    /**
+     * Test if we can get a players name.
+     */
+    public function testGetName()
+    {
+        $game = new DiceGame;
+        $game->setName("player1");
+        $res = $game->getName();
+
+        $this->assertEquals("player1", $res);
+    }
+
+
+
+    /**
+     * Test if we can get the series of value for our histogram.
+     */
+    public function testgetHistogramSerie()
+    {
+        $game = new DiceGame;
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(6));
+        $hand->add(new Dice(5));
+        $hand->add(new Dice(4));
+        $game->addHandToList($hand);
+
+        $res = $game->getHistogramSerie();
+
+        $this->assertEquals([6, 5, 4], $res);
+    }
+
+    /**
+     * Test if we can get a max value.
+     */
+    public function testgetHistogramMax()
+    {
+        $game = new DiceGame;
+        $sum = $game->getHistogramMax();
+
+        $this->assertEquals(6, $sum);
+    }
+
+
+    /**
+     * Test if we can get a min value.
+     */
+    public function testgetHistogramMin()
+    {
+        $game = new DiceGame;
+        $sum = $game->getHistogramMin();
+
+        $this->assertEquals(1, $sum);
     }
 }
