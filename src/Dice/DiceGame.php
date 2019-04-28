@@ -12,8 +12,10 @@ use Exception;
 /**
  * Roll dices to reach 100 points, class supporting the game through GET, POST and SESSION.
  */
-class DiceGame
+class DiceGame implements HistogramInterface
 {
+    use HistogramTrait2;
+
     /**
      * @var array of DiceHand $diceHands The current dices numbers.
      */
@@ -216,5 +218,24 @@ class DiceGame
         }
 
         return false;
+    }
+
+    public function getHistogramSerie()
+    {
+        $res = [];
+        foreach ($this->diceHands as $hand) {
+          foreach($hand->values() as $value) {
+              $res[] = $value;
+            }
+        }
+        return $res;
+    }
+
+    public function getHistogramMax(){
+        return 6;
+    }
+
+    public function getHistogramMin(){
+        return 1;
     }
 }
