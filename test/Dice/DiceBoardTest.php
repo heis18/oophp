@@ -153,8 +153,6 @@ class DiceBoardTest extends TestCase
 
         $this->assertTrue($board->computerHasEnough($hand));
 
-
-
         $hand = new DiceHand(0);
         $hand->add(new Dice(6));
         $hand->add(new Dice(1));
@@ -165,11 +163,63 @@ class DiceBoardTest extends TestCase
         $hand->add(new Dice(6));
         $hand->add(new Dice(6));
 
-
         $board = new DiceBoard();
         $this->assertTrue($board->computerHasEnough($hand));
+
+
+        $board = new DiceBoard();
+        $comp1 = $board->getComputer();
+        $pl1 = $board->getPlayer1();
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(93));
+        $pl1->addHandToList($hand);
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(61));
+        $comp1->addHandToList($hand);
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(10));
+        $this->assertFalse($board->computerHasEnough($hand));
     }
 
+
+    public function testBrave()
+    {
+        $board = new DiceBoard();
+        $pl1 = $board->getPlayer1();
+        $comp1 = $board->getComputer();
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(93));
+        $pl1->addHandToList($hand);
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(21));
+        $comp1->addHandToList($hand);
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(13));
+        $this->assertFalse($board->computerHasEnough($hand));
+    }
+
+
+    public function testChicken()
+    {
+        $board = new DiceBoard();
+        $pl1 = $board->getPlayer1();
+        $comp1 = $board->getComputer();
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(93));
+        $pl1->addHandToList($hand);
+
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(61));
+        $comp1->addHandToList($hand);
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(18));
+        $this->assertTrue($board->computerHasEnough($hand));
+    }
 
     /**
      * Test if we can get the next player.
@@ -206,5 +256,28 @@ class DiceBoardTest extends TestCase
         $board->nextRound();
         $round = $board->getRound();
         $this->assertEquals(3, $round);
+    }
+
+
+    public function testPlayComputer()
+    {
+        // First time , then we can't win.
+        // Make sure that we get three or more dices added to the current hand
+        $board = new DiceBoard();
+        $comp1 = $board->getComputer();
+
+        $this->assertEquals(0, count($comp1->currentHand()->dices()));
+
+        $board->playComputer();
+        $this->assertTrue(3 <= count($comp1->currentHand()->dices()));
+
+        $board = new DiceBoard();
+        $comp1 = $board->getComputer();
+        $hand = new DiceHand(0);
+        $hand->add(new Dice(200));
+        $comp1->addHandToList($hand);
+
+        $board->playComputer();
+        $this->assertTrue(2 >= count($comp1->diceHands()));
     }
 }
