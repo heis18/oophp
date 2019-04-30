@@ -26,25 +26,24 @@ $currentPlayer = $board->getCurrentPlayer();
 
 <h1>Spela tärningsspelet först till 100! (1)</h1>
 
-<div>
+
 <div class="game100Buttons">
 
 <?php if ($board->getWinner() == null) : ?>
     <?php if ($board->getCurrentPlayer() == $p1 && $currentPlayer->isHandValid($currentPlayer->currentHand())) : ?>
-<form class = "game" method="post" action="roll">
+<form class = "roll" method="post" action="roll">
       <input type="submit" name="roll" value="Slå Tärningar">
 </form>
     <?php endif;?>
 
-<form class = "game" method="post" action="next">
+<form class = "next" method="post" action="next">
       <input type="submit" name="next" value="Spara och byt spelare">
 </form>
 <?php endif;?>
 
-<form class = "game" method="get" action="init">
+<form class = "init" method="get" action="init">
       <input type="submit" name="init" value="Starta om">
 </form>
-</div>
 </div>
 
 
@@ -59,7 +58,6 @@ $currentPlayer = $board->getCurrentPlayer();
 
 
 <div class= "dices">
-
     <?php
     $p1g = new DiceHandGraphic($currentPlayer->currentHand());
     ?>
@@ -74,6 +72,7 @@ $currentPlayer = $board->getCurrentPlayer();
 <div class="histogram">
 
 <div class="histogram-p1">
+  <h4>Player 1</h4>
 <?php
 $p1His = new Histogram();
 $p1His->injectData($p1);?>
@@ -81,6 +80,7 @@ $p1His->injectData($p1);?>
 </div>
 
 <div class="histogram-c1">
+  <h4>Computer</h4>
 <?php
 $c1His = new Histogram();
 $c1His->injectData($c1); ?>
@@ -92,7 +92,7 @@ $c1His->injectData($c1); ?>
 
 
 <div class= "players">
-<h4><b>Spelare och poäng i pågående spel:</b></h4>
+<h4><b>Poäng i pågående spel:</b></h4>
 
 <table class="gametable">
     <tr>
@@ -122,6 +122,9 @@ $c1His->injectData($c1); ?>
 
 </table>
 </div>
+
+
+
 
 
 </div>

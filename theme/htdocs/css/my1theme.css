@@ -6605,6 +6605,15 @@ input {
   font-size: 1.3em;
   margin-top: 5px;
 }
+.game100 input {
+  padding: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.game100Buttons {
+  float: none;
+  display: inline-flex;
+}
 .guess {
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
   background-color: #d0d8e3;
@@ -6612,8 +6621,21 @@ input {
   margin-top: 4em;
   margin-bottom: 4em;
 }
+.winner {
+  border: 2px solid aliceblue;
+  background-color: #fad2fb;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+.winner h2 {
+  border-bottom: none;
+  font-weight: bold;
+}
 .players,
-.dices {
+.dices,
+.histogram {
   border: solid 2.5px #d6c9e1;
   padding: 20px;
   padding-top: 10px;
@@ -6624,17 +6646,17 @@ input {
   margin-top: 3em;
   margin-bottom: 3em;
 }
+.players {
+  width: 60%;
+}
+@media screen and (max-width: 1000px) {
+  .players {
+    width: 100%;
+    margin-top: 34em;
+  }
+}
 .dices {
   margin-bottom: 2em;
-}
-.game100 input {
-  padding: 0.5em;
-  padding-left: 2em;
-  padding-right: 2em;
-}
-.game100Buttons {
-  float: none;
-  display: inline-flex;
 }
 .gametable {
   border: 2px solid aliceblue;
@@ -6660,17 +6682,22 @@ input {
   font-weight: bold;
   background-color: #bf8fce;
 }
-.winner {
-  border: 2px solid aliceblue;
-  background-color: #fad2fb;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  text-align: center;
+.histogram {
+  width: 35%;
+  float: right;
+  margin-top: 1em;
 }
-.winner h2 {
-  border-bottom: none;
+.histogram h4 {
+  font-size: 20px;
   font-weight: bold;
+}
+@media screen and (max-width: 1000px) {
+  .histogram {
+    width: 100%;
+  }
+}
+.histogram-p1 {
+  border-bottom: 2px solid aliceblue;
 }
 /**
  * CSS sprite for a dice with six faces.
