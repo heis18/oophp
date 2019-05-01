@@ -3,9 +3,14 @@ Först till 100!
 
 #### Upplagd för ett nytt roligt spel? Spela Tärningsspel först till 100 redan idag!
 
+<div class = playbutton>
+<a href="dice/init">Starta ett nytt spel! (route)</a>
+</div>
 
-### [Starta ett nytt spel! (route)](dice/init)
-### [Starta ett nytt spel! (controller)](dice1/init)
+<div class = playbutton>
+<a href="dice1/init">Starta ett nytt spel! (controller)</a>
+<!-- ### [Starta ett nytt spel! (controller)](dice1/init) -->
+</div>
 
 ## Generella regler för spelet (Vissa undantag kan ibland ske)
 

@@ -6605,6 +6605,34 @@ input {
   font-size: 1.3em;
   margin-top: 5px;
 }
+/**
+ * Settings for my game pages.
+ */
+.playbutton {
+  border: aliceblue;
+  background-color: #8797bf;
+  padding: 12px;
+  text-decoration: none;
+  margin-bottom: 2em;
+  font-size: 1.4em;
+  width: 17em;
+}
+.playbutton a {
+  text-decoration: none;
+  color: #fff;
+}
+.playbutton a:hover {
+  text-decoration: underline;
+}
+.game100 {
+  margin-top: 3em;
+  margin-right: -5em;
+}
+@media screen and (max-width: 650px) {
+  .game100 {
+    margin-right: auto;
+  }
+}
 .game100 input {
   padding: 0.5em;
   padding-left: 2em;
@@ -6613,13 +6641,6 @@ input {
 .game100Buttons {
   float: none;
   display: inline-flex;
-}
-.guess {
-  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
-  background-color: #d0d8e3;
-  padding: 5em;
-  margin-top: 4em;
-  margin-bottom: 4em;
 }
 .winner {
   border: 2px solid aliceblue;
@@ -6636,12 +6657,12 @@ input {
 .players,
 .dices,
 .histogram {
-  border: solid 2.5px #d6c9e1;
+  border: solid 2.5px #a18fb166;
   padding: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 20px;
-  background-color: #dcdaec;
+  background-color: #d5dcef;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.05);
   margin-top: 3em;
   margin-bottom: 3em;
@@ -6665,6 +6686,9 @@ input {
 }
 .gametable td {
   border-right: 1px solid aliceblue;
+  padding: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 .gametable td:first-child {
   width: 20%;
@@ -6675,12 +6699,12 @@ input {
 .gametable tr:first-child {
   border-bottom: 1px solid aliceblue;
   font-weight: bold;
-  background-color: #bf8fce;
+  background-color: #8797bf;
 }
 .gametable tr:last-child {
   border-bottom: 1px solid aliceblue;
   font-weight: bold;
-  background-color: #bf8fce;
+  background-color: #8797bf;
 }
 .histogram {
   width: 35%;
@@ -6727,6 +6751,13 @@ input {
 }
 .dice-sprite.dice-6 {
   background-position: 0 0;
+}
+.guess {
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+  background-color: #d0d8e3;
+  padding: 5em;
+  margin-top: 4em;
+  margin-bottom: 4em;
 }
 /**
  * My settings.

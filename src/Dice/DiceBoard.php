@@ -147,15 +147,15 @@ class DiceBoard
         }
 
         // Vi har mer än 12.
-        if ($hand->sum() > 11) {
-            $p1 = $this->getPlayer1();
-            $p1sum = $p1->sumResult();
+        if ($hand->sum() > 10) {
+            $pl1 = $this->getPlayer1();
+            $p1sum = $pl1->sumResult();
             $oursum = $computer->previewResult($hand);
 
             // We are behind with more than 20 points.
             // use an agressive strategy.
             if ($p1sum > $oursum) {
-                if (($p1sum - $oursum) >= 20) {
+                if (($p1sum - $oursum) >= 15) {
                     // But not too agressive. We want to have atleast 15 points,
                     // But if we got 15 then we are satisified.
                     if ($hand->sum() < 15) {
