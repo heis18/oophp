@@ -123,8 +123,4 @@ $c1His->injectData($c1); ?>
 </table>
 </div>
 
-
-
-
-
 </div>

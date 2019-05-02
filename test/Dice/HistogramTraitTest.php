@@ -9,11 +9,14 @@ namespace Heis\Dice;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Example test class.
+ * Test for Histogram trait.
  */
 class HistogramTraitTest extends TestCase
 {
 
+    /**
+     * Test for init-function.
+     */
     public function testInitSerie()
     {
         $trait = new HistogramDummyTrait();
@@ -22,6 +25,9 @@ class HistogramTraitTest extends TestCase
         $this->assertEquals([], $serie);
     }
 
+    /**
+     * Test for max-function.
+     */
     public function testHistogramMin()
     {
         $trait = new HistogramDummyTrait();
@@ -29,6 +35,9 @@ class HistogramTraitTest extends TestCase
         $this->assertEquals(null, $serie);
     }
 
+    /**
+     * Test for min-function.
+     */
     public function testHistogramMax()
     {
         $trait = new HistogramDummyTrait();
