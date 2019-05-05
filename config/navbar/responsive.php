@@ -75,6 +75,11 @@ return [
             "title" => "Spela 100 spelet.",
         ],
         [
+            "text" => "Movies",
+            "url" => "movie",
+            "title" => "Filmer i databas.",
+        ],
+        [
             "text" => "Styleväljare",
             "url" => "style",
             "title" => "Välj stylesheet.",

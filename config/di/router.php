@@ -21,7 +21,7 @@ return [
                 } else if (defined("ANAX_PRODUCTION")) {
                     $router->setMode(\Anax\Route\Router::PRODUCTION);
                 }
-
+                
                 // Add routes from configuration file
                 $file = null;
                 try {

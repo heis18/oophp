@@ -6605,6 +6605,10 @@ input {
   font-size: 1.3em;
   margin-top: 5px;
 }
+.thumb {
+  max-width: 200px;
+  max-height: 200px;
+}
 /**
  * Settings for my game pages.
  */
