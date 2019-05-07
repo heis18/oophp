@@ -1,6 +1,9 @@
 <form method="post">
-    <fieldset>
-    <legend>Edit</legend>
+  <fieldset class="search-movie">
+    <legend></legend>
+
+    <h2>Add or edit a movie</h2>
+
     <input type="hidden" name="movieId" value="<?= $movie->id ?>"/>
 
     <p>
@@ -27,7 +30,7 @@
     </fieldset>
 
     <p>
-        <a href="movie-select">Back</a> |
-        <a href="index">Show all</a>
+        <a class="movie-link" href="movie-select">Back</a> |
+        <a class="movie-link" href="index">Show all</a>
     </p>
 </form>

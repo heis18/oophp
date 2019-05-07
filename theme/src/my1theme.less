@@ -336,10 +336,72 @@ input {
     }
 }
 
+.movie-head {
+      text-align: center;
+}
+
 .thumb {
     max-width: 200px;
     max-height: 200px;
 }
+
+.all-movie {
+    width: 100%;
+    border: 1.2px solid #aabccc;
+    text-align: center;
+    border-collapse: collapse;
+    td {
+      border-right: 1px solid #88aac8;
+      // border-bottom: 1px solid #88aac8;
+      padding: 3px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+    td:first-child {
+      width: 10%;
+    }
+    td:last-child {
+      border-right: none;
+    }
+    tr {
+      border-bottom:1pt solid #88aac8;
+    }
+    tr:last-child {
+      border: none;
+    }
+    tr:first-child {
+      font-weight: bold;
+      background-color: #8797bf;
+    }
+}
+
+.search-movie {
+      margin-bottom: 2em;
+      border-color: #88aac8;
+    input, select, option {
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      background-color: #666ca8;
+      margin-left: 0.6em;
+      margin-right: 0.6em;
+    }
+}
+
+.movie-link {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 2em;
+      text-decoration: none;
+      color: #666ca8;
+      &:hover {
+        text-decoration: underline;
+      }
+      &:visited {
+        color: #7177b4;
+      }
+}
+
 
 /**
  * Settings for my game pages.

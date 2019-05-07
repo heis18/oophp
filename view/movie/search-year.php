@@ -1,8 +1,11 @@
 
 <form method="get">
-    <fieldset>
-    <legend>Search</legend>
+    <fieldset class="search-movie">
+    <legend></legend>
     <input type="hidden" name="route" value="search-year">
+
+    <h2>Search for a movie by year</h2>
+
     <p>
         <label>Created between:
         <input type="number" name="year1" value="<?= $year1 ?: 1900 ?>" min="1900" max="2100"/>
@@ -13,6 +16,8 @@
     <p>
         <input type="submit" name="doSearch" value="Search">
     </p>
-    <p><a href="index">Show all</a></p>
     </fieldset>
+
+    <p><a class="movie-link" href="index">Show all</a></p>
+
 </form>

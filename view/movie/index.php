@@ -8,8 +8,8 @@ if (!$resultset) {
 }
 
 ?>
-<table>
-    <tr class="first">
+<table class="all-movie">
+    <tr>
         <!-- <th>Rad</th> -->
         <th>Id</th>
         <th>Bild</th>

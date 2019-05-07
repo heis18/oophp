@@ -21,4 +21,4 @@
     <!-- <a href="?route=show-all-paginate">Show all paginate</a> | -->
 </div>
 
-<h1>My Movie Database</h1>
+<h1 class="movie-head">My Movie Database</h1>

@@ -1,6 +1,8 @@
 <form method="post">
-    <fieldset>
-    <legend>Select Movie</legend>
+  <fieldset class="search-movie">
+    <legend></legend>
+
+    <h2>Select a movie</h2>
 
     <p>
         <label>Movie:<br>
@@ -18,6 +20,8 @@
         <input type="submit" name="doEdit" value="Edit">
         <input type="submit" name="doDelete" value="Delete">
     </p>
-    <p><a href="index">Show all</a></p>
     </fieldset>
+
+    <a class="movie-link" href="index">Show all</a>
+
 </form>
