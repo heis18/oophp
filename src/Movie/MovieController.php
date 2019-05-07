@@ -84,7 +84,7 @@ class MovieController implements AppInjectableInterface
     /**
     * @return object
     */
-   public function searchTitleAction() : object
+    public function searchTitleAction() : object
     {
         $title = "Search Movie Title | oophp";
 
@@ -95,8 +95,8 @@ class MovieController implements AppInjectableInterface
         $searchTitle = $request->getGet("searchTitle");
 
         if ($searchTitle) {
-           $sql = "SELECT * FROM movie WHERE title LIKE ?;";
-           $resultset = $this->app->db->executeFetchAll($sql, [$searchTitle]);
+            $sql = "SELECT * FROM movie WHERE title LIKE ?;";
+            $resultset = $this->app->db->executeFetchAll($sql, [$searchTitle]);
         }
 
         $this->app->view->add("movie/header");
@@ -127,14 +127,14 @@ class MovieController implements AppInjectableInterface
         $year1 = $request->getGet("year1");
         $year2 = $request->getGet("year2");
         if ($year1 && $year2) {
-           $sql = "SELECT * FROM movie WHERE year >= ? AND year <= ?;";
-           $resultset = $this->app->db->executeFetchAll($sql, [$year1, $year2]);
+            $sql = "SELECT * FROM movie WHERE year >= ? AND year <= ?;";
+            $resultset = $this->app->db->executeFetchAll($sql, [$year1, $year2]);
         } elseif ($year1) {
-           $sql = "SELECT * FROM movie WHERE year >= ?;";
-           $resultset = $this->app->db->executeFetchAll($sql, [$year1]);
+            $sql = "SELECT * FROM movie WHERE year >= ?;";
+            $resultset = $this->app->db->executeFetchAll($sql, [$year1]);
         } elseif ($year2) {
-           $sql = "SELECT * FROM movie WHERE year <= ?;";
-           $resultset = $this->app->db->executeFetchAll($sql, [$year2]);
+            $sql = "SELECT * FROM movie WHERE year <= ?;";
+            $resultset = $this->app->db->executeFetchAll($sql, [$year2]);
         }
 
         $this->app->view->add("movie/header");
@@ -166,7 +166,7 @@ class MovieController implements AppInjectableInterface
         if ($request->getPost("doDelete")) {
             $sql = "DELETE FROM movie WHERE id = ?;";
             $this->app->db->execute($sql, [$movieId]);
-            header("Location: index");
+            header("Location: movie-select");
             exit;
         } elseif ($request->getPost("doAdd")) {
             $sql = "INSERT INTO movie (title, year, image) VALUES (?, ?, ?);";
@@ -174,7 +174,6 @@ class MovieController implements AppInjectableInterface
             $movieId = $this->app->db->lastInsertId();
             header("Location: movie-edit?movieId=$movieId");
             exit;
-
         } elseif ($request->getPost("doEdit") && is_numeric($movieId)) {
             header("Location: movie-edit?movieId=$movieId");
             exit;
@@ -194,52 +193,43 @@ class MovieController implements AppInjectableInterface
         ]);
     }
 
-
-
-
-
-
-
-
+    /**
+    * @return object
+    */
     public function movieEditAction() : object
     {
-      $title = "Add or edit a movie | oophp";
-      $request = $this->app->request;
-      $this->app->db->connect();
+        $title = "Add or edit a movie | oophp";
 
+        $request = $this->app->request;
+        $this->app->db->connect();
 
+        $movieId    = $request->getPost("movieId") ?: $request->getGet("movieId");
+        $movieTitle = $request->getPost("movieTitle");
+        $movieYear  = $request->getPost("movieYear");
+        $movieImage = $request->getPost("movieImage");
 
-      $movieId    = $request->getPost("movieId") ?: $request->getGet("movieId");
-      $movieTitle = $request->getPost("movieTitle");
-      $movieYear  = $request->getPost("movieYear");
-      $movieImage = $request->getPost("movieImage");
+        if ($request->getPost("doSave")) {
+            $sql = "UPDATE movie SET title = ?, year = ?, image = ? WHERE id = ?;";
+            $this->app->db->execute($sql, [$movieTitle, $movieYear, $movieImage, $movieId]);
+            header("Location: movie-select");
+            exit;
+        }
 
-      if ($request->getPost("doSave")) {
-          $sql = "UPDATE movie SET title = ?, year = ?, image = ? WHERE id = ?;";
-          $this->app->db->execute($sql, [$movieTitle, $movieYear, $movieImage, $movieId]);
-          header("Location: movie-select");
-          exit;
-      }
+        $sql = "SELECT * FROM movie WHERE id = ?;";
+        $movie = $this->app->db->executeFetchAll($sql, [$movieId]);
+        $movie = $movie[0];
 
-
-
-      $sql = "SELECT * FROM movie WHERE id = ?;";
-      $movie = $this->app->db->executeFetchAll($sql, [$movieId]);
-      $movie = $movie[0];
-
-
-      $this->app->view->add("movie/header");
-      $this->app->view->add("movie/movie-edit", [
+        $this->app->view->add("movie/header");
+        $this->app->view->add("movie/movie-edit", [
          "movieId" => $movieId,
          "movieTitle" => $movieTitle,
          "movieYear" => $movieYear,
          "movieImage" => $movieImage,
          "movie" => $movie,
-      ]);
+        ]);
 
-
-      return $this->app->page->render([
-         "title" => $title,
-      ]);
+        return $this->app->page->render([
+          "title" => $title,
+        ]);
     }
 }

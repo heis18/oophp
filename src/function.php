@@ -8,7 +8,8 @@
  *
  * @return void
  */
-function useful() {
+function useful()
+{
     ;
 }
 
