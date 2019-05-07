@@ -2,8 +2,8 @@
 
 namespace Anax\Controller;
 
-use Anax\Commons\AppInjectableInterface;
-use Anax\Commons\AppInjectableTrait;
+use Anax\Commons\ContainerInjectableInterface;
+use Anax\Commons\ContainerInjectableTrait;
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -11,16 +11,16 @@ use Anax\Commons\AppInjectableTrait;
 
 /**
  * A sample controller to show how a controller class can be implemented.
- * The controller will be injected with $app if implementing the interface
- * AppInjectableInterface, like this sample class does.
+ * The controller will be injected with $di if implementing the interface
+ * ContainerInjectableInterface, like this sample class does.
  * The controller is mounted on a particular route and can then handle all
  * requests for that mount point.
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class SampleAppController implements AppInjectableInterface
+class SampleController implements ContainerInjectableInterface
 {
-    use AppInjectableTrait;
+    use ContainerInjectableTrait;
 
 
 
@@ -42,8 +42,6 @@ class SampleAppController implements AppInjectableInterface
     {
         // Use to initialise member variables.
         $this->db = "active";
-
-        // Use $this->app to access the framework services.
     }
 
 
@@ -65,16 +63,16 @@ class SampleAppController implements AppInjectableInterface
 
 
     /**
-     * This sample method dumps the content of $app.
+     * This sample method dumps the content of $di.
      * GET mountpoint/dump-app
      *
      * @return string
      */
-    public function dumpAppActionGet() : string
+    public function dumpDiActionGet() : string
     {
         // Deal with the action and return a response.
-        $services = implode(", ", $this->app->getServices());
-        return __METHOD__ . "<p>\$app contains: $services";
+        $services = implode(", ", $this->di->getServices());
+        return __METHOD__ . "<p>\$di contains: $services";
     }
 
 
@@ -200,7 +198,7 @@ class SampleAppController implements AppInjectableInterface
 
     /**
      * Adding an optional catchAll() method will catch all actions sent to the
-     * router. You can then reply with an actual response or return void to
+     * router. YOu can then reply with an actual response or return void to
      * allow for the router to move on to next handler.
      * A catchAll() handles the following, if a specific action method is not
      * created:

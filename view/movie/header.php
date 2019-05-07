@@ -14,7 +14,7 @@
     <a href="searchTitle">Search title</a> |
     <a href="searchYear">Search year</a> |
     <a href="movieSelect">Select</a> |
-    <a href="?route=reset">Reset database</a>
+    <a href="movieReset">Reset database</a>
 
 <!--    <a href="?route=movie-edit">Edit</a> | -->
     <!-- <a href="?route=show-all-sort">Show all sortable</a> | -->

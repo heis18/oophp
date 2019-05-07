@@ -9,7 +9,5 @@
     </transformer>
     <files>
         <directory>src</directory>
-	<ignore>vendor/*</ignore>
-        <ignore>test/*</ignore>
     </files>
 </phpdoc>

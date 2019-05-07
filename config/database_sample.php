@@ -36,7 +36,7 @@ if ($_SERVER["SERVER_NAME"] === "www.student.bth.se") {
 }
 
 return [
-    "dsn"             => "mysql:host=127.0.0.1;dbname=oophp;",
+    "dsn"             => "mysql:host=127.0.0.1;dbname=ramverk1;",
     "username"        => "user",
     "password"        => "pass",
     "driver_options"  => [

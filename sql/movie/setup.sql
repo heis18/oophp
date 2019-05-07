@@ -11,13 +11,14 @@
 -- USE oophp;
 
 -- Ensure UTF8 as chacrter encoding within connection.
-SET NAMES utf8;
+SET NAMES utf8;-- ;;
 
 
 --
 -- Create table for my own movie database
 --
-DROP TABLE IF EXISTS `movie`;
+DROP TABLE IF EXISTS `movie`;-- ;;
+
 CREATE TABLE `movie`
 (
     `id` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -32,14 +33,16 @@ CREATE TABLE `movie`
     `quality` CHAR(3) DEFAULT NULL,
     `format` CHAR(3) DEFAULT NULL         -- mp4, divx, etc
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
+-- ;;
 
 DELETE FROM `movie`;
-INSERT INTO `movie` (`title`, `year`, `image`) VALUES
-    ('Pulp fiction', 1994, 'img/pulp-fiction.jpg'),
-    ('American Pie', 1999, 'img/american-pie.jpg'),
-    ('Pokémon The Movie 2000', 1999, 'img/pokemon.jpg'),  
-    ('Kopps', 2003, 'img/kopps.jpg'),
-    ('From Dusk Till Dawn', 1996, 'img/from-dusk-till-dawn.jpg')
-;
+-- ;;
 
-SELECT * FROM `movie`;
+INSERT INTO `movie` (`title`, `year`, `image`) VALUES
+    ('Pelle fiction', 1994, 'img/pulp-fiction.jpg'),
+    ('American Pie', 1999, 'img/american-pie.jpg'),
+    ('Pokémon The Movie 2000', 1999, 'img/pokemon.jpg'),
+    ('Kopps', 2003, 'img/kopps.jpg'),
+    ('From Dusk Till Dawn', 1996, 'img/from-dusk-till-dawn.jpg'),
+    ('Star wars', 1977, 'img/star-wars.jpg');
+-- ;;

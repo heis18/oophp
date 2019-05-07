@@ -8,12 +8,13 @@
 
     <p>
         <label>Title (use % as wildcard):
+          <br>
             <input type="search" name="searchTitle" value="<?= esc($searchTitle) ?>"/>
         </label>
     </p>
 
     <p>
-        <input type="submit" name="doSearch" value="Search">
+        <input class="search" type="submit" name="doSearch" value="Search">
     </p>
     </fieldset>
 

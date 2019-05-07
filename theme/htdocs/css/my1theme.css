@@ -6666,6 +6666,18 @@ input {
   background-color: #666ca8;
   margin-left: 0.6em;
   margin-right: 0.6em;
+  margin-top: 1em;
+}
+.search-movie p,
+.search-movie h2 {
+  margin-left: 0.6em;
+}
+.search-movie h2 {
+  margin-bottom: 2em;
+}
+.search {
+  float: right;
+  margin-right: 1em;
 }
 .movie-link {
   font-size: 20px;
