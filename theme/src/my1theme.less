@@ -203,22 +203,31 @@ img.responsive {
 .rm-navbar {
     text-align: center;
     font-family: @fontFamilyCambria;
-    font-size: 1.5em;
+    font-size: 1.2em;
     line-height: 0;
+    margin-top: 5px;
 }
 
 .rm-menu-button {
     font-size: 1.5em;
 }
 
-.rm-desktop li ul {
-    background-color: #fff;
+.rm-desktop li {
+    ul {
+      background-color: #fff;
+    }
+    a {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-shadow: 0 0 25px 0 rgba(0,0,0,.05);
+    }
 }
 
 .wrap-sidebar .block h4 {
-    border-top: 1px solid #ccc;
-    background-image: linear-gradient(to right, #fff, #ccc);
+      border-top: 1px solid #ccc;
+      background-image: linear-gradient(to right, #fff, #ccc);
 }
+
 
 
 
@@ -308,18 +317,24 @@ input {
     margin-bottom: 2em;
 }
 
-.rm-desktop li a {
-    padding-left: 14px;
-    padding-right: 14px;
-    box-shadow: 0 0 25px 0 rgba(0,0,0,.05);
+
+//For the moveie pages
+.movie-top {
+    font-size: 1.1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-color: aliceblue;
+    text-align: center;
+    padding: 5px;
+    a {
+      padding: 8px;
+      text-decoration: none;
+      color: darkcyan;
+    &:hover {
+      text-decoration: underline;
+    }
+    }
 }
-
-
-.rm-navbar {
-    font-size: 1.3em;
-    margin-top: 5px;
-}
-
 
 .thumb {
     max-width: 200px;

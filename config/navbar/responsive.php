@@ -76,7 +76,7 @@ return [
         ],
         [
             "text" => "Movies",
-            "url" => "movie",
+            "url" => "movie/?",
             "title" => "Filmer i databas.",
         ],
         [
