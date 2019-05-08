@@ -98,5 +98,10 @@ return [
             "url" => "dev",
             "title" => "Anax development utilities",
         ],
+        [
+            "text" => "Logga in",
+            "url" => "account",
+            "title" => "Logga in",
+        ],
     ],
 ];

@@ -81,6 +81,8 @@ class MovieController implements AppInjectableInterface
     }
 
 
+
+
     /**
     * @return object
     */
@@ -230,6 +232,25 @@ class MovieController implements AppInjectableInterface
 
         return $this->app->page->render([
           "title" => $title,
+        ]);
+    }
+
+
+
+
+    /**
+    * @return object
+    */
+    public function movieResetAction() : object
+    {
+        $title = "Reset database | oophp";
+
+
+        $this->app->view->add("movie/header");
+        $this->app->view->add("movie/movie-reset");
+
+        return $this->app->page->render([
+           "title" => $title,
         ]);
     }
 }

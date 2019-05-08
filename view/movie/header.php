@@ -13,6 +13,7 @@
     <a href="index">Show all movies</a> |
     <a href="searchTitle">Search title</a> |
     <a href="searchYear">Search year</a> |
+
     <a href="movieSelect">Select</a> |
     <a href="movieReset">Reset database</a>
 

@@ -1,5 +1,10 @@
+<?php
+namespace Anax\View;
 
-<form method="post">
+?>
+
+
+<form method="post" action="<?= url("account/login") ?>">
     <fieldset class="search-movie">
     <legend></legend>
     <input type="hidden" name="route" value="search-title">
@@ -18,9 +23,7 @@
     </p>
 
     <p>
-        <input type="submit" name="login" value="Login">
+        <input class="search" type="submit" name="login" value="Login">
     </p>
     </fieldset>
-
-        <a class="movie-link" href="index">Show all</a>
 </form>
