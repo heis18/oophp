@@ -13,13 +13,11 @@ use PHPUnit\Framework\TestCase;
  */
 class MovieTest extends TestCase
 {
-    /**
-     * Test if we can get a...
-     */
-    public function testDatabaseConnection()
-    {
-
-    }
-
-
+    // /**
+    //  * Test if we can get a...
+    //  */
+    // public function testDatabaseConnection()
+    // {
+    //
+    // }
 }

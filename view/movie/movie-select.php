@@ -1,4 +1,4 @@
-<h4>Du måste vara inloggad på sidan för att använda funktionen</h4>
+<!-- <h4>Du måste vara inloggad på sidan för att använda funktionen</h4> -->
 
 
 <form method="post">

@@ -4,8 +4,8 @@ namespace Heis\Account;
 
 use Anax\Commons\AppInjectableInterface;
 use Anax\Commons\AppInjectableTrait;
-use function Anax\View\url;
 
+use function Anax\View\url;
 
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
@@ -82,18 +82,17 @@ class AccountController implements AppInjectableInterface
     */
     public function loginAction() : object
     {
-        $title = "Login | oophp";
         $request = $this->app->request;
         $user = $request->getPost("user");
         $pass = $request->getPost("password");
 
         $acc = new Account();
 
-        $success = $acc->doLogin(esc($user),esc($pass));
+        $success = $acc->doLogin(esc($user), esc($pass));
         $this->app->session->set("IsLoggedIn", $success);
 
-        if($success){
-          return $this->app->response->redirect(url("account/account-user"));
+        if ($success) {
+            return $this->app->response->redirect(url("account/account-user"));
         }
 
         return $this->app->response->redirect(url("account/account-off"));
@@ -129,20 +128,4 @@ class AccountController implements AppInjectableInterface
            "title" => $title,
         ]);
     }
-}
-
-interface IAccount {
-    public function doLogin($user,$pass);
-    }
-
-class Account implements IAccount {
-  public function doLogin($user, $pass){
-    if($user == "admin" && $pass == "admin") {
-        return true;
-    } else if($user == "doe" && $pass == "doe") {
-        return true;
-    }
-
-    return false;
-  }
 }

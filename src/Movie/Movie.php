@@ -12,30 +12,30 @@
 */
 class Movie
 {
-
-    /**
-    *@var  $number the number from the Dice
-    */
-
-      private $ ;
-
-      /**
-      * Create a
-      * @param .
-      */
-      public function __construct()
-      {
-          $this-> = ;
-      }
-
-      /**
-       *
-       *
-       * @return .
-       */
-
-      public function roll()
-      {
-
-      }
+    //
+    // /**
+    // *@var  $number the number from the Dice
+    // */
+    //
+    //   private $ ;
+    //
+    //   /**
+    //   * Create a
+    //   * @param .
+    //   */
+    //   public function __construct()
+    //   {
+    //       $this-> = ;
+    //   }
+    //
+    //   /**
+    //    *
+    //    *
+    //    * @return .
+    //    */
+    //
+    //   public function roll()
+    //   {
+    //
+    //   }
 }

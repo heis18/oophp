@@ -5,6 +5,8 @@ namespace Heis\Movie;
 use Anax\Commons\AppInjectableInterface;
 use Anax\Commons\AppInjectableTrait;
 
+use function Anax\View\url;
+
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
 // use Anax\Route\Exception\InternalErrorException;
@@ -168,17 +170,14 @@ class MovieController implements AppInjectableInterface
         if ($request->getPost("doDelete")) {
             $sql = "DELETE FROM movie WHERE id = ?;";
             $this->app->db->execute($sql, [$movieId]);
-            header("Location: movie-select");
-            exit;
+            return $this->app->response->redirect(url("movie/movie-select"));
         } elseif ($request->getPost("doAdd")) {
             $sql = "INSERT INTO movie (title, year, image) VALUES (?, ?, ?);";
             $this->app->db->execute($sql, ["A title", 2017, "img/noimage.png"]);
             $movieId = $this->app->db->lastInsertId();
-            header("Location: movie-edit?movieId=$movieId");
-            exit;
+            return $this->app->response->redirect(url("movie/movie-edit?movieId=$movieId"));
         } elseif ($request->getPost("doEdit") && is_numeric($movieId)) {
-            header("Location: movie-edit?movieId=$movieId");
-            exit;
+            return $this->app->response->redirect(url("movie/movie-edit?movieId=$movieId"));
         }
 
         $sql = "SELECT id, title FROM movie;";
@@ -213,8 +212,7 @@ class MovieController implements AppInjectableInterface
         if ($request->getPost("doSave")) {
             $sql = "UPDATE movie SET title = ?, year = ?, image = ? WHERE id = ?;";
             $this->app->db->execute($sql, [$movieTitle, $movieYear, $movieImage, $movieId]);
-            header("Location: movie-select");
-            exit;
+            return $this->app->response->redirect(url("movie/movie-select"));
         }
 
         $sql = "SELECT * FROM movie WHERE id = ?;";
