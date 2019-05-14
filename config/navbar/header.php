@@ -99,6 +99,16 @@ return [
             "title" => "Anax development utilities",
         ],
         [
+            "text" => "Textfilter",
+            "url" => "textfilter",
+            "title" => "Textfilter",
+        ],
+        [
+            "text" => "Blog",
+            "url" => "blog",
+            "title" => "Blog",
+        ],
+        [
             "text" => "Logga in",
             "url" => "account",
             "title" => "Logga in",

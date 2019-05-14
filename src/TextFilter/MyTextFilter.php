@@ -1,6 +1,7 @@
 <?php
 
 namespace Heis\TextFilter;
+
 use Michelf\MarkdownExtra;
 
 /**
@@ -37,17 +38,16 @@ class MyTextFilter
         $res = $text;
         foreach ($filter as $value) {
             if ($value == "bbcode2html") {
-              $res = $this->bbcode2html($res);
-            } else if($value == "makeClickable") {
-              $res = $this->makeClickable($res);
+                $res = $this->bbcode2html($res);
+            } else if ($value == "makeClickable") {
+                $res = $this->makeClickable($res);
             } else if ($value == "markdown") {
-              $res = $this->markdown($res);
+                $res = $this->markdown($res);
             } else if ($value == "nl2br") {
-              $res = $this->nl2br($res);
+                $res = $this->nl2br($res);
             }
         }
         return $res;
-
     }
 
 

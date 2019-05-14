@@ -20,9 +20,10 @@ use function Anax\View\url;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class AccountController implements AppInjectableInterface
+class AccountController implements AppInjectableInterface, IAccountTrait
 {
     use AppInjectableTrait;
+    use AccountTrait;
 
     /**
      * @var string $db a sample member variable that gets initialised
@@ -106,8 +107,9 @@ class AccountController implements AppInjectableInterface
     {
         $title = "Welcome | oophp";
 
-
-        $this->app->view->add("account/account-user");
+        $this->app->view->add("account/account-user", [
+            "user" => $this->app->session->get("IsLoggedIn")
+        ]);
 
         return $this->app->page->render([
            "title" => $title,

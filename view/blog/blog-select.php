@@ -1,7 +1,10 @@
-<!-- <h4>Du måste vara inloggad på sidan för att använda funktionen</h4> -->
 <?php
  namespace Anax\View;
+ 
 ?>
+
+<!-- <h4>Du måste vara inloggad på sidan för att använda funktionen</h4> -->
+
 <form method="post">
   <fieldset class="search-movie">
     <legend></legend>

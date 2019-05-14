@@ -29,11 +29,9 @@ if (!$resultset) {
         <td><?= $row->updated ?></td>
         <td><?= $row->deleted ?></td>
         <td>
-            <a class="icons" href="<?= url("blog/edit?id=".$row->id) ?>" title="Edit this content">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <a class="icons" href="<?= url("blog/edit?id=".$row->id) ?>" title="Edit this content">Update<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a> |
-            <a class="icons" href="?route=delete&amp;id=<?= $row->id ?>" title="Edit this content">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <a class="icons" href="<?= url("blog/delete")?>?id=<?= $row->id ?>" title="Edit this content">Delete<i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
         </td>
     </tr>

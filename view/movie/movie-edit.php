@@ -1,3 +1,8 @@
+<?php
+ namespace Anax\View;
+
+?>
+
 <form method="post">
   <fieldset class="search-movie">
     <legend></legend>

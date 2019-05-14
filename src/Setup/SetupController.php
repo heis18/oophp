@@ -75,16 +75,20 @@ class SetupController implements AppInjectableInterface
         ]);
     }
 
-    public function resetSuccessAction(): object{
-      $title = "Reset database success | oophp";
 
-      $this->app->view->add("setup/reset-db-success");
 
-      return $this->app->page->render([
+    public function resetSuccessAction(): object
+    {
+        $title = "Reset database success | oophp";
+
+        $this->app->view->add("setup/reset-db-success");
+
+        return $this->app->page->render([
           "title" => $title,
-      ]);
-
+        ]);
     }
+
+
 
     /**
     * @return object
@@ -96,30 +100,30 @@ class SetupController implements AppInjectableInterface
 
         $sqlText = file_get_contents("../sql/movie/setup.sql");
 
-        $sqlCommands = explode(";",$sqlText);
+        $sqlCommands = explode(";", $sqlText);
 
-        for($i = 0; $i < count($sqlCommands);$i++){
-          $sqlCommands[$i] = trim($sqlCommands[$i]);
+        for ($i = 0; $i < count($sqlCommands); $i++) {
+            $sqlCommands[$i] = trim($sqlCommands[$i]);
         }
 
-
-
         $this->app->db->connect();
-        foreach($sqlCommands as $sql){
+        foreach ($sqlCommands as $sql) {
             // if row starts with -- or " --" then skip it.
-            $hasComment = strpos(trim($sql),"--");
-            if($hasComment > 0 && $hasComment < 5){
+            $hasComment = strpos(trim($sql), "--");
+            if ($hasComment > 0 && $hasComment < 5) {
                 continue;
             }
 
-            if(trim($sql) != ""){
+            if (trim($sql) != "") {
                   $sql = $sql . ";\n";
                   //echo "$sql\n<br/>";
               //    $res = $this->app->db->execute($sql);
-
-          }
+            }
         }
         return $this->app->response->redirect(url("setup/resetsuccess"));
 
+        return $this->app->page->render([
+          "title" => $title,
+        ]);
     }
 }

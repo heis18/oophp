@@ -1,13 +1,17 @@
 <?php
  namespace Anax\View;
+
 ?>
 
-<?php if(isset($message)): { ?>
+<?php if (isset($message)) : { ?>
   <div><?= $message ?></div>
-<?php } endif; ?>
+    <?php
+    }
+endif;
+?>
 
 <form method="post" action="<?= url("blog/update") ?>">
-    <fieldset>
+  <fieldset class="search-movie">
     <legend>Edit</legend>
     <input type="hidden" name="contentId" value="<?= esc($blog->getId()) ?>"/>
 
@@ -51,7 +55,7 @@
     <p>
         <button type="submit" value="doSave" name="doSave"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
         <button type="reset"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-        <button type="submit" name="doDelete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+        <button type="submit" name="doDelete" value="doDelete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
     </p>
     </fieldset>
 </form>

@@ -6550,7 +6550,7 @@ a.rm-button.rm-clicked .rm-button-face-2 {
   background-color: #d0d8e3;
   padding: 10px;
   padding-bottom: 50px;
-  height: 72px;
+  height: 96px;
   margin-bottom: 0;
 }
 .inner-wrap-main {
@@ -6659,7 +6659,7 @@ input {
 }
 .search-movie input,
 .search-movie select,
-.search-movie option {
+.search-movie option submit {
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
@@ -6674,6 +6674,10 @@ input {
 }
 .search-movie h2 {
   margin-bottom: 2em;
+}
+.search-movie .textarea {
+  height: 15em;
+  background-color: #765d9f;
 }
 .search {
   float: right;

@@ -4,7 +4,7 @@ namespace Anax\View;
 
 ?>
 
-<h1>Welcome</h1>
+<h1>Welcome <?=$user->getName()?></h1>
 
 <p>You can now do changes in the database!</p>
 

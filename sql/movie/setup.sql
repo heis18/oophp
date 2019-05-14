@@ -10,13 +10,11 @@
 -- GRANT ALL ON oophp.* TO user@localhost IDENTIFIED BY "pass";
 -- USE oophp;
 
--- Ensure UTF8 as chacrter encoding within connection.
-SET NAMES utf8;-- ;;
+-- Ensure UTF8 as chacrter encoding within connection.;
+SET NAMES utf8;
 
 
---
--- Create table for my own movie database
---
+-- Create table for my own movie database;
 DROP TABLE IF EXISTS `movie`;-- ;;
 
 CREATE TABLE `movie`
@@ -33,10 +31,8 @@ CREATE TABLE `movie`
     `quality` CHAR(3) DEFAULT NULL,
     `format` CHAR(3) DEFAULT NULL         -- mp4, divx, etc
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
--- ;;
 
 DELETE FROM `movie`;
--- ;;
 
 INSERT INTO `movie` (`title`, `year`, `image`) VALUES
     ('Pelle fiction', 1994, 'img/pulp-fiction.jpg'),
@@ -45,4 +41,3 @@ INSERT INTO `movie` (`title`, `year`, `image`) VALUES
     ('Kopps', 2003, 'img/kopps.jpg'),
     ('From Dusk Till Dawn', 1996, 'img/from-dusk-till-dawn.jpg'),
     ('Star wars', 1977, 'img/star-wars.jpg');
--- ;;

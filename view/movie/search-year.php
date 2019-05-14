@@ -1,3 +1,7 @@
+<?php
+ namespace Anax\View;
+
+?>
 
 <form method="get">
     <fieldset class="search-movie">

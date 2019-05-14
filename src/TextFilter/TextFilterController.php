@@ -119,23 +119,4 @@ Spana in den här sidan: https://www.etsy.com/shop/eMerakiStudio/items";
 
         ]);
     }
-
-    /**
-     * This is the index method action, it handles:
-     * ANY METHOD mountpoint
-     * ANY METHOD mountpoint/
-     * ANY METHOD mountpoint/index
-     *
-     * @return object
-     */
-    public function initAction() : object
-    {
-        // Init the session too start the game.
-        $game = new DiceBoard();
-        $this->app->session->set("game", $game);
-
-        return $this->app->response->redirect("dice1/play");
-    }
-
-
 }

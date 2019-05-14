@@ -42,6 +42,15 @@ return [
         ],
         [
             "region" => "header-col-1",
+            "template" => "blog/grym",
+            "data" => [
+                "class" => "large",
+                "siteLogo"      => "image/theme/leaf_256x256.png",
+                "siteLogoAlt"   => "Löv",
+            ],
+        ],
+        [
+            "region" => "header-col-1",
             "template" => "anax/v2/header/site_logo_text",
             "data" => [
                 "homeLink"      => "",
@@ -94,6 +103,16 @@ return [
                 "contentRoute" => "block/footer",
             ],
             "sort" => 2
+        ],
+
+        [
+            "region" => "footer",
+            "template" => "blog/grym",
+            "data" => [
+                "class"  => "site-footer",
+                "contentRoute" => "block/footer",
+            ],
+            "sort" => 3
         ],
     ],
 ];

@@ -23,8 +23,8 @@ if (!$resultset) {
           <th>Updated</th>
           <th>Deleted</th>
       </tr>
-  <?php $id = -1; foreach ($resultset as $row) :
-      $id++; ?>
+    <?php $id = -1; foreach ($resultset as $row) :
+        $id++; ?>
       <tr>
           <td><?= $id ?></td>
           <td><?= $row->id ?></td>
@@ -37,5 +37,5 @@ if (!$resultset) {
           <td><?= $row->updated ?></td>
           <td><?= $row->deleted ?></td>
       </tr>
-  <?php endforeach; ?>
+    <?php endforeach; ?>
   </table>
