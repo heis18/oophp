@@ -6,7 +6,7 @@ namespace Anax\View;
 <article>
     <header>
         <h1><?= esc($content->getContentTitle()) ?></h1>
-        <p><i>Latest update: <time datetime=" esc($content->modified_iso8601) " pubdate> esc($content->modified) </time></i></p>
+        <p><i>Latest update: <time datetime="$content->getUpdatedISO()" pubdate><?= $content->getUpdatedFormatted()?></time></i></p>
     </header>
-    <?= esc($content->getContentData()) ?>
+    <?= $content->getFormattedContent() ?>
 </article>

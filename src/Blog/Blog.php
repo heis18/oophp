@@ -1,5 +1,4 @@
 <?php
-
 /**
  * A class for movie-methodes.
  * @author Helena Isåfjäll <heis18@student.bth.se>
@@ -9,6 +8,9 @@
 
  use Anax\Commons\AppInjectableInterface;
  use Anax\Commons\AppInjectableTrait;
+ use function Anax\View\url;
+ use Heis\TextFilter;
+ use DateTime;
 
 /**
 * A movie class
@@ -17,7 +19,6 @@ class Blog implements AppInjectableInterface
 {
     use AppInjectableTrait;
 
-    private $db;
     private $contentTitle;
     private $contentPath;
     private $contentSlug;
@@ -130,7 +131,6 @@ class Blog implements AppInjectableInterface
         return $this->contentFilter;
     }
 
-
     public function setContentFilter($data)
     {
         $this->contentFilter = $data;
@@ -142,27 +142,148 @@ class Blog implements AppInjectableInterface
         return $this->contentPublish;
     }
 
+    public function getContentPublishISO()
+    {
+        if ($this->getContentPublish() == null) {
+            return "";
+        }
+
+        $date = new DateTime($this->getContentPublish());
+        return $date->format(DateTime::ATOM);
+    }
+
 
     public function setContentPublish($data)
     {
         $this->contentPublish = $data;
     }
 
-
     public function getContentSlug()
     {
         return $this->contentSlug;
     }
-
 
     public function setContentSlug($data)
     {
         $this->contentSlug = $data;
     }
 
-
     public function getDeleted()
     {
         return $this->deleted;
+    }
+
+    public function getDeletedFormatted($format = "Y-m-d")
+    {
+        if ($this->deleted == null) {
+            return "";
+        }
+
+        return $this->deleted->format($format);
+    }
+
+    public function getUpdatedFormatted($format = "Y-m-d")
+    {
+        if ($this->updated == null) {
+            return "";
+        }
+
+        $date = new DateTime($this->updated);
+        return $date->format($format);
+    }
+
+    public function getUpdatedISO()
+    {
+        if ($this->updated == null) {
+            return "";
+        }
+
+        $date = new DateTime($this->updated);
+        return $date->format(DateTime::ATOM);
+    }
+
+    public function getContentPublishFormatted($format = "Y-m-d")
+    {
+        if ($this->contentPublish == null) {
+            return "";
+        }
+
+        $date = new DateTime($this->updated);
+        return $date->format($format);
+    }
+
+    public function getCreatedFormatted($format = "Y-m-d")
+    {
+        if ($this->created == null) {
+            return "";
+        }
+
+        $date = new DateTime($this->created);
+        return $date->format($format);
+    }
+
+    public function createLink()
+    {
+        $blogurl = url("blog/page?route=");
+
+        $pathOrSlug = "";
+        if (($this->getContentSlug() ?? "") != "") {
+            $pathOrSlug = "slug/".$this->getContentSlug();
+        } else if (($this->getContentPath() ?? "") != "") {
+            $pathOrSlug = "path/".$this->getContentPath();
+        } else {
+            $pathOrSlug = "id/".$this->getId();
+        }
+
+        return $blogurl.$pathOrSlug;
+    }
+
+    public function getFormattedContent()
+    {
+        $textFilter = new \Heis\TextFilter\MyTextFilter();
+        $contentFilters = explode(',', $this->getContentFilter());
+
+        $activfilter = [];
+        foreach ($contentFilters as $filter) {
+            $activfilter[] = $textFilter->getFilter($filter);
+        }
+
+        return $textFilter->parse($this->getContentData(), $activfilter);
+    }
+
+    public static function getAllByType($database, $type)
+    {
+        $res = [];
+        $sql = "SELECT * FROM content where type = ? ;";
+        $resultSet = $database->executeFetchAll($sql, [$type]);
+
+        foreach ($resultSet as $item) {
+            $res[] = new Blog($item);
+        }
+
+        return $res;
+    }
+
+    public static function getBySlug($database, $type, $search)
+    {
+        $sql = "SELECT * FROM content WHERE type = ? AND slug = ? ;";
+        $res = $database->executeFetchAll($sql, [$type, $search]);
+        $page = new Blog($res[0]);
+        return $page;
+    }
+
+    public static function getByPath($database, $type, $search)
+    {
+        $sql = "SELECT * FROM content WHERE type = ? AND path = ? ;";
+        $res = $database->executeFetchAll($sql, [$type, $search]);
+        $page = new Blog($res[0]);
+        return $page;
+    }
+
+    public static function getBlog($database, $id)
+    {
+        $sql = "SELECT * FROM content WHERE id = ?;";
+        $data = $database->executeFetchAll($sql, [$id]);
+        return new Blog($data[0]);
     }
 }

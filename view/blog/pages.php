@@ -23,7 +23,7 @@ foreach ($resultset as $row) :
     $id++; ?>
     <tr>
         <td><?= $row->getId() ?></td>
-        <td><a href="<?= url("blog/page")?>?route=path/<?= $row->getContentPath() ?>"><?= $row->getContentTitle(); ?></a></td>
+        <td><a href="<?=$row->createLink();?>"><?= $row->getContentTitle(); ?></a></td>
         <td><?= $row->getContentType() ?></td>
         <td><?= $row->getContentPath() ?></td>
         <td><?= $row->getContentPublish() ?></td>

@@ -24,32 +24,16 @@ class BlogController implements AppInjectableInterface
 {
     use AppInjectableTrait;
 
-    public function test3Action()
-    {
-        //$route = $this->app->page->view->add();
-        //$this->app->view->add("blog/header");
-        //$this->app->page->add("blog/test",["data" => "nisse"]);
-        return '<b>nisse</b>';
-    }
-
-    public function testAction()
-    {
-        $route = "block/footer";
-
-        $content = $this->app->content->contentForInternalRoute($route);
-        var_dump($content->views["main"]["data"]);
-//      $this->app->view->add("blog/test");
-
-      //return $this->app->page->render();
-      //var_dump($this->app->view->get("blog/header"));
-      //return $this->app->view->render("blog/header");
-    }
+    private $blogService;
 
     /**
      * @var string $db a sample member variable that gets initialised
      */
-    // private $db = "not active";
 
+    public function __construct()
+    {
+        $this->blogService = new Blog();
+    }
 
 
     /**
@@ -160,7 +144,7 @@ class BlogController implements AppInjectableInterface
         $this->app->db->connect();
 
         $id = $request->getGet("id");
-        $editBlog = $this->getBlog($id);
+        $editBlog = $this->blogService->getBlog($this->app->db, $id);
 
         $this->app->view->add("blog/header");
         $this->app->view->add("blog/blog-edit", [
@@ -177,7 +161,6 @@ class BlogController implements AppInjectableInterface
 
     public function deleteAction()
     {
-        $title = "Edit";
         $request = $this->app->request;
         $contentId = $request->getPost("contentId") ?: $request->getGet("id");
         if (is_numeric($contentId)) {
@@ -194,7 +177,6 @@ class BlogController implements AppInjectableInterface
     */
     public function updateAction() : object
     {
-
         $title = "Edit";
         $request = $this->app->request;
         $this->app->db->connect();
@@ -219,15 +201,11 @@ class BlogController implements AppInjectableInterface
         $delete = $request->getPost("doDelete") ?: $request->getGet("doDelete");
         if ($delete && is_numeric($contentId)) {
             $this->deleteBlog($contentId);
-        } elseif ($request->getPost("doSave") && is_numeric($contentId)) {
-            $editBlog = $this->getBlog($contentId);
+        } else if ($request->getPost("doSave") && is_numeric($contentId)) {
+            $editBlog = $this->blogService->getBlog($this->app->db, $contentId);
             if ($contentSlug ==  null && $contentTitle != null) {
                 $contentSlug = slugify($contentTitle);
             }
-
-            // First check to see if there is a duplicate slug.
-            // That is a no no.
-            $oldSlug = $editBlog->getContentSlug();
 
             $editBlog->setContentTitle($contentTitle);
             $editBlog->setContentPath($contentPath);
@@ -253,11 +231,10 @@ class BlogController implements AppInjectableInterface
 
             $this->updateBlog($editBlog);
         } else {
-            die("Ogitligt alternativ ");
+            $this->app->response->redirect(url("blog/error"));
         }
 
         return $this->app->response->redirect(url("blog/admin"));
-        ///return $this->app->response->redirect(url("blog/admin"));
     }
 
     public function pagesAction() : object
@@ -266,44 +243,23 @@ class BlogController implements AppInjectableInterface
 
         $this->app->db->connect();
 
-        $pages = null;
-        $res = [];
-        $sql = "SELECT * FROM content where type='page' ;";
-        $resultSet = $this->app->db->executeFetchAll($sql, []);
-
-        $res[] = $this->getBlog(-1);
-        foreach ($resultSet as $item) {
-            $res[] = new Blog($item);
-        }
+        $res = $this->blogService->getAllByType($this->app->db, 'page');
 
         $this->app->view->add("blog/header");
         $this->app->view->add("blog/pages", [
-          "resultset" => $res,
-          ]);
+            "resultset" => $res,
+        ]);
 
         return $this->app->page->render([
             "title" => $title,
         ]);
     }
 
-
-
     public function pageAction() : object
     {
         $title = "Pages | oophp";
 
-        $this->app->db->connect();
-
-        $sql = "SELECT * FROM content;";
-        $res = $this->app->db->executeFetchAll($sql);
-
-        if (count($res) == 0) {
-            $page = $this->getBlog(-1);
-        } else {
-            $page = new Blog($res[0]);
-        }
-
-        $page = $this->getBlog(1);
+        $page = $this->getBlogByRoute('page');
         $this->app->view->add("blog/header");
         $this->app->view->add("blog/page", [
           "content" => $page,
@@ -314,33 +270,43 @@ class BlogController implements AppInjectableInterface
         ]);
     }
 
+    private function getBlogByRoute($type)
+    {
+        $page = null;
+
+        $route = $this->app->request->getGet("route");
+        $routeArray = explode('/', $route);
+        $routeChoice = $routeArray[0];
+        $search = $routeArray[1] ?? "";
+
+        $this->app->db->connect();
+        if ($routeChoice == 'path') {
+            $page = $this->blogService->getByPath($this->app->db, $type, $search);
+        } else if ($routeChoice == 'slug') {
+            $page = $this->blogService->getBySlug($this->app->db, $type, $search);
+        } else {
+            $page = $this->blogService->getBlog($this->app->db, $search);
+        }
+
+        return $page;
+    }
 
     public function blogAction() : object
     {
         $title = "Blog | oophp";
 
         $this->app->db->connect();
-
-        $pages = null;
-        $res = [];
-        $sql = "SELECT * FROM content where type='post' ;";
-        $resultSet = $this->app->db->executeFetchAll($sql, []);
-
-        $res[] = $this->getBlog(-1);
-        foreach ($resultSet as $item) {
-            $res[] = new Blog($item);
-        }
+        $res = $this->blogService->getAllByType($this->app->db, 'post');
 
         $this->app->view->add("blog/header");
         $this->app->view->add("blog/blog", [
-          "resultset" => $res,
-          ]);
+            "resultset" => $res,
+        ]);
 
         return $this->app->page->render([
             "title" => $title,
         ]);
     }
-
 
     public function blogpostAction() : object
     {
@@ -348,17 +314,8 @@ class BlogController implements AppInjectableInterface
 
         $this->app->db->connect();
 
-        $sql = "SELECT * FROM content;";
-        $res = $this->app->db->executeFetchAll($sql);
+        $page = $this->getBlogByRoute('post');
 
-
-        if (count($res) == 0) {
-            $page = $this->getBlog(-1);
-        } else {
-            $page = new Blog($res[0]);
-        }
-
-        $page = $this->getBlog(1);
         $this->app->view->add("blog/header");
         $this->app->view->add("blog/blogpost", [
           "content" => $page,
@@ -369,31 +326,12 @@ class BlogController implements AppInjectableInterface
         ]);
     }
 
-
-    private function getBlog($id)
-    {
-        $blog = null;
-
-        if ($id == -1) {
-            return (new Blog())->createDummy();
-        } else {
-            $sql = "SELECT * FROM content WHERE id = ?;";
-            $data = $this->app->db->executeFetchAll($sql, [$id]);
-            return new Blog($data[0]);
-        }
-        return $blog;
-    }
-
-
-
     private function createBlog($blog) : int
     {
         $sql = "INSERT INTO content (title) VALUES (?);";
         $this->app->db->execute($sql, [$blog->getContentTitle()]);
         return $this->app->db->lastInsertId();
     }
-
-
 
     private function updateBlog($blog)
     {

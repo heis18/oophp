@@ -2,20 +2,15 @@
 
 namespace Heis\Account;
 
-interface IAccountTrait
-{
-    public function IsLoggedIn();
-}
-
 trait AccountTrait
 {
-    public function IsLoggedIn()
+    public function isLoggedIn()
     {
-        return $this->app->session->get("IsLoggedIn") != null;
+        return $this->app->session->get("isLoggedIn") != null;
     }
 
     public function getUser()
     {
-        return $this->app->session->get("IsLoggedIn");
+        return $this->app->session->get("isLoggedIn");
     }
 }

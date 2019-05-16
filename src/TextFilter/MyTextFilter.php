@@ -23,7 +23,10 @@ class MyTextFilter
         "nl2br"     => "nl2br",
     ];
 
-
+    public function getFilter($str)
+    {
+        return $this->filters[$str];
+    }
 
     /**
      * Call each filter on the text and return the processed text.
@@ -47,10 +50,9 @@ class MyTextFilter
                 $res = $this->nl2br($res);
             }
         }
+
         return $res;
     }
-
-
 
     /**
      * Helper, BBCode formatting converting to HTML.
@@ -82,8 +84,6 @@ class MyTextFilter
         return preg_replace($search, $replace, $text);
     }
 
-
-
     /**
      * Make clickable links from URLs in text.
      *
@@ -102,8 +102,6 @@ class MyTextFilter
         );
     }
 
-
-
     /**
      * Format text according to Markdown syntax.
      *
@@ -115,8 +113,6 @@ class MyTextFilter
     {
         return MarkdownExtra::defaultTransform($text);
     }
-
-
 
     /**
      * For convenience access to nl2br formatting of text.
