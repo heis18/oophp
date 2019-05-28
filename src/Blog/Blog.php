@@ -179,7 +179,8 @@ class Blog implements AppInjectableInterface
             return "";
         }
 
-        return $this->deleted->format($format);
+        $date = new DateTime($this->updated);
+        return $date->format($format);
     }
 
     public function getUpdatedFormatted($format = "Y-m-d")
